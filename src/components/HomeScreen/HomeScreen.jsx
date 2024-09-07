@@ -18,7 +18,7 @@ const HomeScreen = () => {
       <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
       <Row title="Top Rated" fetchUrl={requests.fetchTopRated} />
       <Row title="Action" fetchUrl={requests.fetchActionMovies} />
-      <Row title="Comedy Specials" fetchUrl={requests.fetchComedyMovies} />
+      <Row title="Comedy" fetchUrl={requests.fetchComedyMovies} />
       <Row title="Horror" fetchUrl={requests.fetchHorroMovies} />
       <Row title="Romance" fetchUrl={requests.fetchRomanceMovies} />
       <Row title="Animated" fetchUrl={requests.fetchAnimationMovies} />
