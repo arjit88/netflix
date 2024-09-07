@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Nav.css";
+import logo from "../../assets/logo.png";
+import search_icon from "../../assets/search_icon.svg";
+import bell_icon from "../../assets/bell_icon.svg";
+import profile_img from "../../assets/profile_img.png";
+import caret_icon from "../../assets/caret_icon.svg";
 
 const Nav = () => {
   const [show, setShow] = useState(false);
@@ -20,17 +25,31 @@ const Nav = () => {
   return (
     <div className={`nav ${show && "nav__black"}`}>
       <div className="nav__contents">
-        <img
-          className="nav__logo"
-          src="https://www.freepnglogos.com/uploads/netflix-logo-text-emblem-31.png"
-          alt=""
-        />
+        <div className="nav-left">
+          <img src={logo} alt="Netflix_logo" />
+          <ul>
+            <li>Home</li>
+            <li>Tv Shows</li>
+            <li>Movies</li>
+            <li>New & Popular</li>
+            <li>My List</li>
+            <li>Browse by Languages</li>
+          </ul>
+        </div>
 
-        <img
-          className="nav__avatar"
-          src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-          alt="avatar"
-        />
+        <div className="nav-right">
+          <img src={search_icon} alt="search_icon" className="icons" />
+          <p>Children</p>
+          <img src={bell_icon} alt="bell_icon" className="icons" />
+
+          <div className="nav-profile">
+            <img src={profile_img} alt="profile_img" className="profile" />
+            <img src={caret_icon} alt="caret_icon" />
+            <div className="dropdown">
+              <p>Sign Out of Netflix</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

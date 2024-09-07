@@ -19,7 +19,7 @@
   object-fit: contain;
   margin-right: 10px;
   width: 100%;
-  transition: transform 300ms;
+  transition: transform 350ms;
   cursor: pointer;
 }
 
