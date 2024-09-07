@@ -4,7 +4,6 @@ import logo from "../../assets/logo.png";
 import search_icon from "../../assets/search_icon.svg";
 import bell_icon from "../../assets/bell_icon.svg";
 import profile_img from "../../assets/profile_img.png";
-import caret_icon from "../../assets/caret_icon.svg";
 
 const Nav = () => {
   const [show, setShow] = useState(false);
@@ -44,10 +43,6 @@ const Nav = () => {
 
           <div className="nav-profile">
             <img src={profile_img} alt="profile_img" className="profile" />
-            <img src={caret_icon} alt="caret_icon" />
-            <div className="dropdown">
-              <p>Sign Out of Netflix</p>
-            </div>
           </div>
         </div>
       </div>
