@@ -4,6 +4,7 @@ import Nav from "../Navbar/Nav";
 import Banner from "../Banner/Banner";
 import Row from "../Row/Row";
 import requests from "../../config/Requests";
+import Footer from "../Footer/Footer";
 
 const HomeScreen = () => {
   return (
@@ -36,6 +37,8 @@ const HomeScreen = () => {
       <Row title="History" fetchUrl={requests.fetchHistoryMovies} />
       <Row title="Tv Special" fetchUrl={requests.fetchTVMovies} />
       <Row title="Documentary" fetchUrl={requests.fetchDocumentaries} />
+
+      <Footer />
     </div>
   );
 };
