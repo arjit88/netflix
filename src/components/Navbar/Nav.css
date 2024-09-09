@@ -28,23 +28,32 @@
 }
 
 .nav-left img {
-  width: 90px;
+  height: 40px;
   cursor: pointer;
+  transition: all ease;
+}
+
+.nav-left img:hover {
+  scale: 1.02;
 }
 
 .nav-left ul {
   display: flex;
   list-style: none;
-  gap: 40px;
+  gap: 30px;
 }
 
 .nav-left ul li {
   cursor: pointer;
   transition: all ease;
+  font-size: 18px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .nav-left ul li:hover {
   scale: 1.1;
+  color: white;
 }
 
 .nav-right {
@@ -54,12 +63,14 @@
 }
 
 .nav-right .icons {
-  width: 20px;
+  height: 24px;
   cursor: pointer;
+  opacity: 70%;
 }
 
 .nav-right .icons:hover {
   scale: 1.1;
+  opacity: 100%;
 }
 
 .nav-profile {
@@ -72,7 +83,7 @@
 
 .nav-right .profile {
   border-radius: 4px;
-  width: 35px;
+  height: 40px;
 }
 
 .nav-right .profile:hover {

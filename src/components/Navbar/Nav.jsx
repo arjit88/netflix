@@ -4,6 +4,7 @@ import logo from "../../assets/logo.png";
 import search_icon from "../../assets/search_icon.svg";
 import bell_icon from "../../assets/bell_icon.svg";
 import profile_img from "../../assets/profile_img.png";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   const [show, setShow] = useState(false);
@@ -25,7 +26,9 @@ const Nav = () => {
     <div className={`nav ${show && "nav__black"}`}>
       <div className="nav__contents">
         <div className="nav-left">
-          <img src={logo} alt="Netflix_logo" />
+          <Link to={"/"} className="nav-left">
+            <img src={logo} alt="Netflix_logo" />
+          </Link>
           <ul>
             <li>Home</li>
             <li>Tv Shows</li>

@@ -12,12 +12,25 @@
   justify-content: space-between;
 }
 
+.auth__header img {
+  transition: transform 350ms;
+}
+
+.auth__header img:hover {
+  scale: 1.02;
+}
+
 .auth__link {
   color: white;
   background-color: #e53e3e;
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
   text-decoration: none;
+  transition: transform 350ms;
+}
+
+.auth__link:hover {
+  scale: 1.02;
 }
 
 .hero {
@@ -48,11 +61,13 @@
 
 .hero__fist {
   font-size: 1.125rem;
+  font-weight: 300;
   margin-bottom: 1rem;
 }
 
 .hero__sec {
   margin-bottom: 1rem;
+  font-weight: 300;
 }
 
 .auth__form {
@@ -90,6 +105,11 @@
   border: none;
   color: white;
   cursor: pointer;
+  transition: transform 350ms;
+}
+
+.auth__form button:hover {
+  scale: 1.01;
 }
 
 @media (min-width: 768px) {

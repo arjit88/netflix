@@ -50,8 +50,8 @@ const AuthPage = () => {
           <div className="first_section_left">
             <h2>Enjoy on your Tv</h2>
             <p>
-              Watch pn Smart Tvs, PlayStation, Xbox, Chromecast, Apple Tv,
-              Blu-ray players, and More.
+              Watch on Smart Tvs, PlayStation, Xbox, Chromecast, Apple Tv,
+              Blue-ray players, and More.
             </p>
           </div>
           <div className="first_section_right">
