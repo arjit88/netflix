@@ -1,5 +1,6 @@
 .auth-bg {
   position: relative;
+  height: 100vh;
 }
 
 .auth__header {

@@ -38,7 +38,6 @@ const Nav = () => {
 
         <div className="nav-right">
           <img src={search_icon} alt="search_icon" className="icons" />
-          <p>Children</p>
           <img src={bell_icon} alt="bell_icon" className="icons" />
 
           <div className="nav-profile">
