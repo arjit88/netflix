@@ -1,10 +1,11 @@
 import React from "react";
 import "./AuthPage.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 import Footer from "../../components/Footer/Footer";
 
 const AuthPage = () => {
+  const navigate = useNavigate();
   return (
     <div
       className="auth-bg"
@@ -37,7 +38,7 @@ const AuthPage = () => {
 
         <form className="auth__form">
           <input type="email" placeholder="Email address" />
-          <button>
+          <button onClick={() => navigate("/signup")}>
             Get Started <IoIosArrowForward />
           </button>
         </form>

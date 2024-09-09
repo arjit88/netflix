@@ -13,7 +13,7 @@ const Signup = () => {
       }}
     >
       <header className="signup__header">
-        <Link to={"/"}>
+        <Link to={"/authpage"}>
           <img
             src="/netflix-logo.png"
             alt="logo"

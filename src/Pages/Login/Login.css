@@ -7,7 +7,7 @@
 .signup__header {
   max-width: 72rem;
   margin: 0 auto;
-  margin-right: 216px;
+  margin-right: 232px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -16,6 +16,11 @@
 .netflix_signup_logo {
   width: 10rem;
   margin-top: 20px;
+  transition: all ease;
+}
+
+.netflix_signup_logo:hover {
+  scale: 1.02;
 }
 
 .form__main__container {
