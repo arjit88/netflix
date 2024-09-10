@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./Nav.css";
 import logo from "../../assets/logo.png";
 import search_icon from "../../assets/search_icon.svg";
-import bell_icon from "../../assets/bell_icon.svg";
 import profile_img from "../../assets/profile_img.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { LuLogOut } from "react-icons/lu";
 
 const Nav = () => {
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
 
   const transitionNavBar = () => {
     if (window.scrollY > 100) {
@@ -41,10 +42,17 @@ const Nav = () => {
 
         <div className="nav-right">
           <img src={search_icon} alt="search_icon" className="icons" />
-          <img src={bell_icon} alt="bell_icon" className="icons" />
 
           <div className="nav-profile">
             <img src={profile_img} alt="profile_img" className="profile" />
+            <div className="hover">
+              <LuLogOut
+                onClick={() => navigate("/login")}
+                className="nav-profile-logout-icon"
+                size={25}
+              />
+              <p className="nav-profile-logout">Logout</p>
+            </div>
           </div>
         </div>
       </div>

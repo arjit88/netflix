@@ -4,6 +4,10 @@
   width: 100%;
 }
 
+.nav__black {
+  background-color: #111;
+}
+
 .auth__header {
   max-width: 72rem;
   margin: 0 auto;
@@ -11,6 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 .auth__header img {
@@ -26,12 +31,17 @@
   background-color: #e53e3e;
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
-  text-decoration: none;
+  cursor: pointer;
+  border: none;
   transition: transform 350ms;
 }
 
 .auth__link:hover {
-  scale: 1.02;
+  scale: 1.03;
+}
+
+.auth__link:active {
+  scale: 0.96;
 }
 
 .hero {
@@ -61,14 +71,14 @@
 }
 
 .hero__fist {
-  font-size: 1.125rem;
-  font-weight: 300;
+  font-size: 2rem;
+  font-weight: 400;
   margin-bottom: 1rem;
 }
 
 .hero__sec {
-  margin-bottom: 1rem;
-  font-weight: 300;
+  margin-bottom: 1.3rem;
+  font-weight: 400;
 }
 
 .auth__form {
@@ -85,7 +95,7 @@
 }
 
 .auth__form input {
-  padding: 0.5rem;
+  padding: 10px;
   border-radius: 0.25rem;
   flex: 1;
   background-color: rgba(0, 0, 0, 0.8);
@@ -97,8 +107,6 @@
 .auth__form button {
   background-color: #dc2626;
   height: 46px;
-  font-size: 16px;
-  padding: 1rem;
   border-radius: 0.25rem;
   display: flex;
   justify-content: center;
@@ -106,11 +114,10 @@
   border: none;
   color: white;
   cursor: pointer;
-  transition: transform 350ms;
 }
 
-.auth__form button:hover {
-  scale: 1.01;
+.auth__form button:active {
+  scale: 0.96;
 }
 
 @media (min-width: 768px) {

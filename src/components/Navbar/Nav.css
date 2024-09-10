@@ -93,3 +93,33 @@
 .nav__black {
   background-color: #111;
 }
+
+.nav-profile-logout-icon {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.nav-profile-logout-icon:hover {
+  scale: 1.1;
+}
+
+.hover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hover .nav-profile-logout {
+  color: rgba(255, 255, 255, 0.7);
+  position: absolute;
+  top: 31px;
+  right: -9px;
+  opacity: 0;
+  transition: opacity 1s ease;
+  transition-delay: 5ms;
+}
+
+.hover:hover .nav-profile-logout {
+  opacity: 1;
+}
