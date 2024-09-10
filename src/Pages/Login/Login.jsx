@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logIn, signUp } from "../../config/firebase";
 import netflix_spinner from "../../assets/netflix_spinner.gif";
 
@@ -10,6 +10,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleClick = async (event) => {
     event.preventDefault();
@@ -36,13 +38,12 @@ const Login = () => {
       }}
     >
       <header className="signup__header">
-        <Link to={"/authpage"}>
-          <img
-            src="/netflix-logo.png"
-            alt="logo"
-            className="netflix_signup_logo"
-          />
-        </Link>
+        <img
+          src="/netflix-logo.png"
+          alt="logo"
+          className="netflix_signup_logo"
+          onClick={() => navigate("/authpage")}
+        />
       </header>
 
       <div className="login-form">

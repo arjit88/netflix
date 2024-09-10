@@ -18,13 +18,12 @@ const AuthPage = () => {
       }}
     >
       <header className="auth__header">
-        <Link to={"/login"}>
-          <img
-            src="/netflix-logo.png"
-            alt="logo"
-            className="netflix_signup_logo"
-          />
-        </Link>
+        <img
+          src="/netflix-logo.png"
+          alt="logo"
+          className="netflix_signup_logo"
+          onClick={() => navigate("/login")}
+        />
 
         <button className="auth__link" onClick={() => navigate("/login")}>
           Sign In

@@ -2,8 +2,6 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-import { Provider } from "react-redux";
-import { store } from "./app/store.js";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./ErrorPage.jsx";
 import Login from "./Pages/Login/Login.jsx";
@@ -30,10 +28,8 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <Provider store={store}>
-    <StrictMode>
-      <ToastContainer theme="dark" />
-      <RouterProvider router={router} />
-    </StrictMode>
-  </Provider>
+  <StrictMode>
+    <ToastContainer theme="dark" />
+    <RouterProvider router={router} />
+  </StrictMode>
 );
