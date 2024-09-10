@@ -34,6 +34,7 @@
   cursor: pointer;
   border: none;
   transition: transform 350ms;
+  text-decoration: none;
 }
 
 .auth__link:hover {
@@ -104,7 +105,7 @@
   font-size: 16px;
 }
 
-.auth__form button {
+.auth__form__link {
   background-color: #dc2626;
   height: 46px;
   border-radius: 0.25rem;

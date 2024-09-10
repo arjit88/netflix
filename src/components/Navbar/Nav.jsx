@@ -5,6 +5,7 @@ import search_icon from "../../assets/search_icon.svg";
 import profile_img from "../../assets/profile_img.png";
 import { Link, useNavigate } from "react-router-dom";
 import { LuLogOut } from "react-icons/lu";
+import { logOut } from "../../config/firebase";
 
 const Nav = () => {
   const [show, setShow] = useState(false);
@@ -47,7 +48,9 @@ const Nav = () => {
             <img src={profile_img} alt="profile_img" className="profile" />
             <div className="hover">
               <LuLogOut
-                onClick={() => navigate("/login")}
+                onClick={() => {
+                  logOut();
+                }}
                 className="nav-profile-logout-icon"
                 size={25}
               />
