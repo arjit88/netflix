@@ -3,7 +3,7 @@ import "./Nav.css";
 import logo from "../../assets/logo.png";
 import search_icon from "../../assets/search_icon.svg";
 import profile_img from "../../assets/profile_img.png";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { LuLogOut } from "react-icons/lu";
 import { logOut } from "../../config/firebase";
 
@@ -28,9 +28,7 @@ const Nav = () => {
     <div className={`nav ${show && "nav__black"}`}>
       <div className="nav__contents">
         <div className="nav-left">
-          <Link to={"/"} className="nav-left">
-            <img src={logo} alt="Netflix_logo" />
-          </Link>
+          <img src={logo} alt="Netflix_logo" onClick={() => navigate("/")} />
           <ul>
             <li>Home</li>
             <li>Tv Shows</li>

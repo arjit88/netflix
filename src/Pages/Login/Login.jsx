@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Login.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { logIn, signUp } from "../../config/firebase";
 import netflix_spinner from "../../assets/netflix_spinner.gif";
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./AuthPage.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
 import Footer from "../../components/Footer/Footer";
 
@@ -48,7 +48,10 @@ const AuthPage = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
 
-          <button className="auth__form__link" onClick={() => navigate("#")}>
+          <button
+            className="auth__form__link"
+            onClick={() => navigate("/login")}
+          >
             Get Started <IoIosArrowForward />
           </button>
         </div>
