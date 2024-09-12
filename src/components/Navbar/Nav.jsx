@@ -34,16 +34,17 @@ const Nav = () => {
             <li>Tv Shows</li>
             <li>Movies</li>
             <li>New & Popular</li>
-            <li>My List</li>
-            <li>Browse by Languages</li>
           </ul>
         </div>
 
         <div className="nav-right">
-          <img src={search_icon} alt="search_icon" className="icons" />
-
           <div className="nav-profile">
-            <img src={profile_img} alt="profile_img" className="profile" />
+            <img
+              src={profile_img}
+              alt="profile_img"
+              className="profile"
+              onClick={() => navigate("/profile")}
+            />
             <div className="hover">
               <LuLogOut
                 onClick={() => {

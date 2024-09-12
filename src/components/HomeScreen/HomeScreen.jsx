@@ -17,13 +17,16 @@ const HomeScreen = () => {
         isLargeRow
       />
       <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
+      <Row title="Up Coming" fetchUrl={requests.fetchUpComing} />
+      <Row title="Popular" fetchUrl={requests.fetchPopular} />
       <Row title="Top Rated" fetchUrl={requests.fetchTopRated} />
       <Row title="Action" fetchUrl={requests.fetchActionMovies} />
-      <Row title="Comedy" fetchUrl={requests.fetchComedyMovies} />
       <Row title="Horror" fetchUrl={requests.fetchHorroMovies} />
       <Row title="Romance" fetchUrl={requests.fetchRomanceMovies} />
+      <Row title="Now Playing" fetchUrl={requests.fetchNowPlaying} />
       <Row title="Animated" fetchUrl={requests.fetchAnimationMovies} />
       <Row title="Crime" fetchUrl={requests.fetchCrimeMovies} />
+      <Row title="Comedy" fetchUrl={requests.fetchComedyMovies} />
       <Row title="Science Fiction" fetchUrl={requests.fetchSciFiMovies} />
       <Row title="Adventure" fetchUrl={requests.fetchAdventureMovies} />
       <Row title="Drama" fetchUrl={requests.fetchDramaMovies} />

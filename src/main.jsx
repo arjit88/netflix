@@ -10,6 +10,8 @@ import { store } from "./features/store.js";
 import ErrorPage from "./ErrorPage.jsx";
 import Login from "./Pages/Login/Login.jsx";
 import AuthPage from "./Pages/AuthPage/AuthPage.jsx";
+import Profile from "./Pages/Profile/Profile.jsx";
+import Player from "./Pages/Player/Player.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,16 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/player/:id",
+    element: <Player />,
     errorElement: <ErrorPage />,
   },
 ]);

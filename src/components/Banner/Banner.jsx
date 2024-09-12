@@ -10,12 +10,13 @@ const Banner = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const request = await axios.get(requests.fetchTrending);
+      const request = await axios.get(requests.fetchPopular);
       setMovie(
         request.data.results[
           Math.floor(Math.random() * request.data.results.length - 1)
         ]
       );
+      return request;
     };
 
     fetchData();
@@ -31,9 +32,9 @@ const Banner = () => {
     <header
       className="banner"
       style={{
-        backgroundSize: "cover",
         backgroundImage: `url('https://image.tmdb.org/t/p/original/${movie?.backdrop_path}')`,
-        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundPosition: "center center",
       }}
     >
       <div className="banner__contents">

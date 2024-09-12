@@ -36,6 +36,10 @@
   margin: auto;
 }
 
+.form__span {
+  color: #e50914;
+}
+
 .login-form label {
   color: white;
 }

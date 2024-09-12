@@ -47,10 +47,15 @@ const Login = () => {
             <form>
               {signState === "Sign Up" ? (
                 <div>
+                  <label htmlFor="name">
+                    Name<span className="form__span">*</span>
+                  </label>
                   <input
                     type="text"
                     placeholder="username"
                     value={name}
+                    id="name"
+                    name="name"
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
@@ -58,18 +63,28 @@ const Login = () => {
                 <></>
               )}
               <div>
+                <label htmlFor="email">
+                  Email<span className="form__span">*</span>
+                </label>
                 <input
                   type="email"
                   placeholder="you@example.com"
                   value={email}
+                  id="email"
+                  name="email"
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div>
+                <label htmlFor="password">
+                  Password<span className="form__span">*</span>
+                </label>
                 <input
                   type="password"
                   placeholder="password"
                   value={password}
+                  id="password"
+                  name="password"
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>

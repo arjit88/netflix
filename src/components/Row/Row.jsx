@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Row.css";
 import axios from "../../config/axios";
+import { useNavigate } from "react-router-dom";
 
 const Row = ({ title, fetchUrl, isLargeRow = false }) => {
+  const navigate = useNavigate();
   const [movies, setMovies] = useState([]);
 
   const base_url = "https://image.tmdb.org/t/p/original/";
@@ -23,7 +25,7 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
 
       <div className="row__posters">
         {movies.map(
-          (movie) =>
+          (movie, index) =>
             ((isLargeRow && movie.poster_path) ||
               (!isLargeRow && movie.backdrop_path)) && (
               <img
@@ -33,6 +35,7 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
                   isLargeRow ? movie.poster_path : movie.backdrop_path
                 }`}
                 alt={movie.name}
+                onClick={() => navigate(`/player/${movie.id}`)}
               />
             )
         )}
