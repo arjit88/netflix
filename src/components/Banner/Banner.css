@@ -94,3 +94,21 @@
   background-color: #e6e6e6;
   transition: all 0.2s;
 }
+
+@media (max-width: 1594px) {
+  .banner--fadeBottom {
+    position: absolute;
+    height: 80.6rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .banner__buttons .banner__button {
+    padding: 10px 14px;
+    gap: 5px;
+    font-size: 12px;
+  }
+  .banner--fadeBottom {
+    height: 58.5rem;
+  }
+}

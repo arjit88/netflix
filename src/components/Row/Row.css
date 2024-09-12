@@ -39,3 +39,25 @@
   transform: scale(1.09);
   opacity: 1;
 }
+
+@media (max-width: 800px) {
+  .row h2 {
+    font-size: 20px;
+  }
+  .row .row__posters {
+    margin-top: 20px;
+    margin-bottom: 0;
+  }
+  .row__posters img {
+    width: 200px;
+  }
+}
+
+@media (max-width: 500px) {
+  .row h2 {
+    font-size: 15px;
+  }
+  .row__posters img {
+    width: 192px;
+  }
+}
