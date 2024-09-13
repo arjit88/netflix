@@ -6,6 +6,7 @@ import avatar3 from "../../assets/avatar3.png";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../config/firebase";
 import { onAuthStateChanged } from "firebase/auth";
+import Plan from "../Plan/Plan";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -39,16 +40,16 @@ const Profile = () => {
           <img src={avatar3} alt="" />
           <div className="profileScreen__details">
             {user ? (
-              <h2>
-                <span className="profileScreen__details__span">Hii</span>
-                {user.email}
-              </h2>
+              <h2>Welcome, {user.email || "User"}</h2>
             ) : (
               <h2>you@example.com</h2>
             )}
             <div className="profileScreen__plans">
               <h3>Plans</h3>
+              <h2>Watch On</h2>
             </div>
+
+            <Plan />
           </div>
         </div>
       </div>

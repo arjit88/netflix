@@ -437,3 +437,11 @@
   background-color: black;
   color: white;
 }
+
+@media (max-width: 500px) {
+  .auth__header .auth__link {
+    margin-left: 100px;
+    margin-top: 20px;
+    padding: 5px 26px;
+  }
+}

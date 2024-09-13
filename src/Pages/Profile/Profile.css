@@ -165,12 +165,18 @@
 }
 
 .profileScreen__plans {
+  display: flex;
   margin-top: 20px;
 }
 
 .profileScreen__plans > h3 {
   border-bottom: 1px solid #282c2d;
   padding-bottom: 10px;
+}
+
+.profileScreen__plans h2 {
+  font-size: 18px;
+  margin-left: 240px;
 }
 
 .profileScreen__info > img {
