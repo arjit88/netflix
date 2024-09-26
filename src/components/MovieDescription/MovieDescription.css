@@ -2,7 +2,7 @@
 
 .movie-description {
   position: relative;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .movie-description__banner {
