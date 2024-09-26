@@ -49,16 +49,19 @@ const MovieDescription = () => {
                 <h2>Directed by: {director ? director.name : "N/A"}</h2>
                 <h3>Cast:</h3>
                 <div className="movie-description__cast">
-                  {movie?.credits.cast.slice(0, 5).map((actor) => (
-                    <div key={actor.id} className="actor">
-                      <img
-                        className="actor__photo"
-                        src={`${base_url}${actor.profile_path}`}
-                        alt={actor.name}
-                      />
-                      <p className="actor__name">{actor.name}</p>
-                    </div>
-                  ))}
+                  {movie?.credits.cast
+                    .filter((actor) => actor.profile_path) // Filter out actors without a profile picture
+                    .slice(0, 5)
+                    .map((actor) => (
+                      <div key={actor.id} className="actor">
+                        <img
+                          className="actor__photo"
+                          src={`${base_url}${actor.profile_path}`}
+                          alt={actor.name}
+                        />
+                        <p className="actor__name">{actor.name}</p>
+                      </div>
+                    ))}
                 </div>
               </div>
               <a

@@ -1,12 +1,12 @@
 .banner {
   position: relative;
-  /* height: 100vh; */
   color: white;
   object-fit: contain;
   width: 100%;
   mask-image: linear-gradient(to left, transparent, black 75%);
   -webkit-mask-image: linear-gradient(to left, transparent, black 75%);
   overflow-x: hidden;
+  transition: background-image 1s ease-in-out; /* Smooth background transition */
 }
 
 .banner__contents {
@@ -15,6 +15,7 @@
   margin-left: 2%;
   bottom: 0;
   height: 305px;
+  transition: opacity 1s ease-in-out; /* Smooth opacity transition for contents */
 }
 
 .banner__title {
@@ -24,6 +25,7 @@
   font-weight: 600;
   padding-bottom: 0.3rem;
   color: rgba(255, 255, 255, 0.7);
+  transition: opacity 1s ease-in-out; /* Smooth opacity transition */
 }
 
 .banner__description {
@@ -35,6 +37,7 @@
   font-weight: 300;
   height: 80px;
   color: rgba(255, 255, 255, 0.7);
+  transition: opacity 1s ease-in-out; /* Smooth opacity transition */
 }
 
 .banner--fadeBottom {
@@ -45,6 +48,10 @@
     rgba(37, 37, 37, 0.61),
     #111
   );
+}
+
+.fade {
+  opacity: 0; /* Fully transparent during fade */
 }
 
 .banner__buttons {

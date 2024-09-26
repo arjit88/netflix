@@ -94,6 +94,7 @@
   border-radius: 8px; /* Rounded corners */
   object-fit: cover; /* Maintain aspect ratio */
   border: 2px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+  overflow-x: hidden;
 }
 
 .actor__photo:hover {

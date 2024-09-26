@@ -57,23 +57,28 @@ const Popular = () => {
       <Nav />
 
       <div className="new-and-popular">
-        <h2>New & Popular Movies</h2>
+        <h2>New & Popular</h2>
         <div className="new-and-popular__posters">
-          {movies?.map((movie, index) => (
-            <img
-              className="new-and-popular__poster"
-              key={`${index}-${page}`} // Ensure unique key
-              src={`${base_url}${movie.poster_path || movie.backdrop_path}`}
-              alt={movie.title}
-              onClick={() => {
-                if (movie.id) {
-                  navigate(`/movieDescription/${movie.id}`);
-                } else {
-                  console.error("Movie ID is undefined for:", movie);
-                }
-              }}
-            />
-          ))}
+          {movies
+            ?.filter(
+              (movie) =>
+                movie.title && (movie.poster_path || movie.backdrop_path)
+            ) // Filter out movies with empty title or missing photos
+            .map((movie, index) => (
+              <img
+                className="new-and-popular__poster"
+                key={`${index}-${page}`} // Ensure unique key
+                src={`${base_url}${movie.poster_path || movie.backdrop_path}`}
+                alt={movie.title}
+                onClick={() => {
+                  if (movie.id) {
+                    navigate(`/movieDescription/${movie.id}`);
+                  } else {
+                    console.error("Movie ID is undefined for:", movie);
+                  }
+                }}
+              />
+            ))}
           <div id="last-movie" style={{ height: "20px" }} />
         </div>
         {loading && <p className="loading">Loading more...</p>}

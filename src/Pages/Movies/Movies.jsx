@@ -11,7 +11,8 @@ const Movies = () => {
   const [loading, setLoading] = useState(false);
   const observer = useRef();
   const base_url = "https://image.tmdb.org/t/p/original/";
-  const fetchUrl = `https://api.themoviedb.org/3/movie/popular?api_key=c4d2f5db860396b544127ac219cadde5&page=`;
+  const fetchUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=c4d2f5db860396b544127ac219cadde5&page=`;
+
   const fetchData = async () => {
     setLoading(true);
     try {
@@ -58,21 +59,26 @@ const Movies = () => {
       <div className="movies">
         <h2>Movies</h2>
         <div className="movies__posters">
-          {movies?.map((movie, index) => (
-            <img
-              className="movie__poster"
-              key={index}
-              src={`${base_url}${movie.poster_path || movie.backdrop_path}`}
-              alt={movie.title}
-              onClick={() => {
-                if (movie.id) {
-                  navigate(`/movieDescription/${movie.id}`);
-                } else {
-                  console.error("Movie ID is undefined for:", movie);
-                }
-              }}
-            />
-          ))}
+          {movies
+            ?.filter(
+              (movie) =>
+                movie.title && (movie.poster_path || movie.backdrop_path)
+            ) // Filter out movies with empty title or missing photos
+            .map((movie, index) => (
+              <img
+                className="movie__poster"
+                key={index}
+                src={`${base_url}${movie.poster_path || movie.backdrop_path}`}
+                alt={movie.title}
+                onClick={() => {
+                  if (movie.id) {
+                    navigate(`/movieDescription/${movie.id}`);
+                  } else {
+                    console.error("Movie ID is undefined for:", movie);
+                  }
+                }}
+              />
+            ))}
           <div id="last-movie" style={{ height: "20px" }} />{" "}
           {/* Empty div to act as the target for observer */}
         </div>
