@@ -1,0 +1,77 @@
+/* Search.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000; /* Black background for the entire screen */
+  color: #fff; /* White text */
+  font-family: Arial, sans-serif; /* Change to your desired font */
+}
+
+.search-page {
+  max-width: 1200px; /* Limit the width of the search page */
+  margin: 0 auto; /* Center it horizontally */
+  padding: 20px; /* Add some padding around */
+}
+
+.search-input {
+  width: 100%; /* Full width */
+  padding: 15px; /* Padding for a better click area */
+  font-size: 1.5rem; /* Increase font size */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #333; /* Darker background for input */
+  color: #fff; /* White text color */
+  outline: none; /* Remove outline */
+  transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.search-input::placeholder {
+  color: #bbb; /* Light gray placeholder */
+}
+
+.search-input:focus {
+  background-color: #444; /* Change background color on focus */
+}
+
+.search-results {
+  display: grid; /* Use grid layout for posters */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(150px, 1fr)
+  ); /* Responsive grid */
+  gap: 20px; /* Space between items */
+  margin-top: 20px; /* Space above the results */
+}
+
+.search-item {
+  cursor: pointer; /* Change cursor to pointer */
+  transition: transform 0.3s; /* Smooth transition */
+  text-align: center; /* Center align the title */
+}
+
+.search-item:hover {
+  transform: scale(1.05); /* Enlarge on hover */
+}
+
+.poster {
+  width: 100%; /* Full width of the container */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.title {
+  margin-top: 5px; /* Space between the poster and the title */
+  font-size: 1rem; /* Adjust title size */
+}
+
+.no-results {
+  text-align: center; /* Center the no results message */
+  color: #aaa; /* Lighter gray for no results text */
+  margin-top: 20px; /* Space above no results */
+}
+
+.loading {
+  text-align: center; /* Center the loading text */
+  color: #aaa; /* Lighter gray for loading text */
+  margin: 20px 0; /* Margin for spacing */
+}
