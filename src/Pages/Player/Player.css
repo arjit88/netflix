@@ -8,12 +8,24 @@
   background-color: #111;
 }
 
-.player img {
+.arrowContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   top: 20px;
   left: 20px;
   width: 50px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
+  transition: background-color 0.3s;
   cursor: pointer;
+}
+
+.arrowContainer:hover {
+  background-color: rgba(128, 128, 128, 0.5);
 }
 
 .player iframe {

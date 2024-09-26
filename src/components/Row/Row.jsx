@@ -35,7 +35,7 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
                   isLargeRow ? movie.poster_path : movie.backdrop_path
                 }`}
                 alt={movie.name}
-                onClick={() => navigate(`/player/${movie.id}`)}
+                onClick={() => navigate(`/movieDescription/${movie.id}`)}
               />
             )
         )}

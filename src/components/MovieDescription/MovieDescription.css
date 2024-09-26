@@ -1,0 +1,157 @@
+/* MovieDescription.css */
+
+.movie-description {
+  position: relative;
+  color: #ffffff;
+}
+
+.movie-description__banner {
+  height: 100vh; /* Full-screen height */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center; /* Center vertically */
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 100px;
+  background-color: #111;
+  text-align: center;
+}
+
+.movie-description__overlay {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Reduced shadow for better readability */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  padding: 20px;
+  text-align: left; /* Align text to the left */
+}
+
+.movie-description__content {
+  width: 70%; /* Increase width for title and description */
+  max-width: none; /* Remove max-width limit */
+  padding-left: 20px; /* Add padding to stick the content to the left */
+  text-align: left; /* Ensure the content is aligned to the left */
+}
+
+.movie-description__content h1 {
+  font-size: 3rem; /* Keep the larger title size */
+  margin: 0;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Softer shadow */
+  width: 100%; /* Ensure the title takes up the full width of the container */
+}
+
+.movie-description__overview {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  opacity: 0.9; /* Slightly faded effect */
+  width: 100%; /* Ensure the description takes up the full width of the container */
+}
+
+.movie-description__details {
+  margin-top: 20px;
+  opacity: 0.95; /* Slightly faded for subtlety */
+}
+
+.movie-description__details h2,
+.movie-description__details h3 {
+  margin: 5px 0;
+  opacity: 0.9; /* Faded effect for details headers */
+  font-weight: bold; /* Make headings stand out */
+}
+
+.movie-description__cast {
+  display: flex;
+  gap: 20px; /* Increased gap for better spacing */
+  margin-top: 20px; /* Add margin for spacing */
+}
+
+.actor {
+  text-align: center;
+  transition: transform 0.3s; /* Smooth scaling on hover */
+}
+
+.actor__photo {
+  width: 100px; /* Adjust size as needed */
+  height: 150px;
+  border-radius: 8px; /* Rounded corners */
+  object-fit: cover; /* Maintain aspect ratio */
+  border: 2px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+}
+
+.actor__photo:hover {
+  transform: scale(1.1); /* Scale up on hover */
+}
+
+.actor__name {
+  font-size: 0.9rem;
+  margin-top: 5px;
+  opacity: 0.9; /* Slightly faded effect for actor names */
+}
+
+.play-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #e50914; /* Netflix red */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1.2rem; /* Larger font size */
+  transition: background-color 0.3s, transform 0.3s;
+  margin-top: 20px; /* Add space above the button */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Softer shadow */
+}
+
+.play-button:hover {
+  background-color: #f40612; /* Darker red on hover */
+  transform: scale(1.02); /* Slightly enlarge on hover */
+}
+
+.play-button:active {
+  transform: scale(0.98); /* Scale down on click */
+}
+
+/* Responsive styles */
+@media (max-width: 900px) {
+  .movie-description__content {
+    width: 80%; /* Adjust width for tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .movie-description__content {
+    width: 90%; /* Adjust width for mobile screens */
+    padding-left: 10px; /* Less padding on small screens */
+  }
+
+  .movie-description__content h1 {
+    font-size: 2.5rem; /* Adjust for mobile */
+  }
+
+  .movie-description__overview {
+    font-size: 1rem;
+  }
+
+  .actor__photo {
+    width: 70px; /* Smaller on mobile */
+    height: 100px;
+  }
+}

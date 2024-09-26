@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Nav.css";
 import logo from "../../assets/logo.png";
-import search_icon from "../../assets/search_icon.svg";
+import { FiSearch } from "react-icons/fi";
 import profile_img from "../../assets/profile_img.png";
 import { useNavigate } from "react-router-dom";
 import { LuLogOut } from "react-icons/lu";
@@ -30,15 +30,20 @@ const Nav = () => {
         <div className="nav-left">
           <img src={logo} alt="Netflix_logo" onClick={() => navigate("/")} />
           <ul>
-            <li>Home</li>
-            <li>Tv Shows</li>
-            <li>Movies</li>
-            <li>New & Popular</li>
+            <li onClick={() => navigate("/")}>Home</li>
+            <li onClick={() => navigate("/tvshows")}>Tv Shows</li>
+            <li onClick={() => navigate("/movies")}>Movies</li>
+            <li onClick={() => navigate("/popular")}>New & Popular</li>
           </ul>
         </div>
 
         <div className="nav-right">
           <div className="nav-profile">
+            <FiSearch
+              className="search_icon"
+              onClick={() => navigate("/search")}
+              size={30}
+            />
             <img
               src={profile_img}
               alt="profile_img"

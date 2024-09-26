@@ -1,0 +1,67 @@
+/* TvShows.css */
+
+.tv-shows {
+  padding: 20px;
+  background-color: #141414; /* Dark background for contrast */
+  color: #ffffff; /* White text for readability */
+  padding-top: 70px;
+}
+
+.tv-shows h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase; /* Uppercase for a more striking header */
+  letter-spacing: 2px; /* Slight letter spacing */
+  color: #e50914; /* Netflix red for emphasis */
+}
+
+.tv-shows__posters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px; /* Space between posters */
+  cursor: pointer;
+}
+
+.tv-show__poster {
+  width: 180px; /* Set width for uniformity */
+  border-radius: 8px; /* Rounded corners for the posters */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+}
+
+.tv-show__poster:hover {
+  transform: scale(1.05); /* Scale effect on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7); /* Enhanced shadow on hover */
+}
+
+/* Loading text styling */
+.loading {
+  text-align: center;
+  margin: 20px 0;
+  color: #ffffff; /* Match text color with the background */
+  font-size: 1.2rem; /* Slightly larger font for loading */
+  animation: fadeIn 1s; /* Fade-in animation for loading */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .tv-show__poster {
+    width: 140px; /* Smaller width for mobile devices */
+  }
+
+  .tv-shows h2 {
+    font-size: 1.5rem; /* Smaller header on mobile */
+  }
+}

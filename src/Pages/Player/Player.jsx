@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Player.css";
-import back_arrow_icon from "../../assets/back_arrow_icon.png";
 import { useNavigate, useParams } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 
 const Player = () => {
   const { id } = useParams();
@@ -35,15 +35,15 @@ const Player = () => {
 
   return (
     <div className="player">
-      <img
-        src={back_arrow_icon}
-        alt="back_arrow_icon"
-        onClick={() => navigate(-2)}
-      />
+      <div className="arrowContainer" onClick={() => navigate("/")}>
+        <FaArrowLeft size={24} color="white" />
+      </div>
       <iframe
         width="90%"
         height="90%"
-        src={`https://www.youtube.com/embed/${apiData.key}`}
+        src={`https://www.youtube.com/embed/${
+          apiData?.key ?? "No preview available for this movie"
+        }`}
         title="trailer"
         frameBorder="0"
         allowFullScreen

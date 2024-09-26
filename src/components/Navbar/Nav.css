@@ -68,6 +68,17 @@
   opacity: 70%;
 }
 
+.search_icon {
+  margin-right: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+}
+
+.search_icon:hover {
+  scale: 1.1;
+  opacity: 100%;
+}
+
 .nav-right .icons:hover {
   scale: 1.1;
   opacity: 100%;

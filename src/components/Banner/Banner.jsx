@@ -4,13 +4,15 @@ import axios from "../../config/axios";
 import requests from "../../config/Requests";
 import play_icon from "../../assets/play_icon.png";
 import info_icon from "../../assets/info_icon.png";
+import { useNavigate } from "react-router-dom";
 
 const Banner = () => {
   const [movie, setMovie] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
-      const request = await axios.get(requests.fetchPopular);
+      const request = await axios.get(requests.fetchUpComing);
       setMovie(
         request.data.results[
           Math.floor(Math.random() * request.data.results.length - 1)
@@ -32,7 +34,9 @@ const Banner = () => {
     <header
       className="banner"
       style={{
-        backgroundImage: `url('https://image.tmdb.org/t/p/original/${movie?.backdrop_path}')`,
+        backgroundImage: `url("https://image.tmdb.org/t/p/original/${
+          movie?.backdrop_path ?? "Preview is not available for this movie"
+        }")`,
         backgroundSize: "cover",
         backgroundPosition: "center center",
       }}
@@ -42,10 +46,28 @@ const Banner = () => {
           {movie?.title || movie?.name || movie?.original_name}
         </h1>
         <div className="banner__buttons">
-          <button className="banner__button">
+          <button
+            className="banner__button"
+            onClick={() =>
+              navigate(
+                `/player/${
+                  movie?.id ?? "Video is not available for this movie"
+                }`
+              )
+            }
+          >
             <img src={play_icon} alt="play_icon" /> Play
           </button>
-          <button className="banner__button dark">
+          <button
+            className="banner__button dark"
+            onClick={() =>
+              navigate(
+                `/movieDescription/${
+                  movie?.id ?? "Description is not available for this movie"
+                }`
+              )
+            }
+          >
             <img src={info_icon} alt="info_icon" />
             More Info
           </button>
