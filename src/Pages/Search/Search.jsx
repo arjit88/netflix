@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa"; // Import the back arrow icon
+import { FaArrowLeft } from "react-icons/fa";
 import "./Search.css";
 
 const Search = () => {
@@ -9,7 +9,7 @@ const Search = () => {
   const [results, setResults] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(""); // Added error state
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const apiKey = "c4d2f5db860396b544127ac219cadde5";
@@ -26,10 +26,10 @@ const Search = () => {
             ? response.data.results
             : [...results, ...response.data.results]
         );
-        setError(""); // Clear error on new search
+        setError("");
       } catch (error) {
         console.error("Error fetching search results:", error);
-        setError("An error occurred while fetching results."); // Set error message
+        setError("An error occurred while fetching results.");
       } finally {
         setLoading(false);
       }

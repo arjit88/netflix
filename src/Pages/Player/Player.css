@@ -5,9 +5,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #111; /* Dark background */
-  padding: 20px; /* Padding for better spacing */
-  position: relative; /* Needed for positioning the arrow */
+  background-color: #111;
+  padding: 20px;
+  position: relative;
 }
 
 .arrowContainer {
@@ -17,61 +17,60 @@
   position: absolute;
   top: 20px;
   left: 20px;
-  width: 40px; /* Fixed size */
-  height: 40px; /* Fixed size */
-  border-radius: 50%; /* Round button */
-  background-color: transparent; /* No background */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
   transition: background-color 0.3s;
   cursor: pointer;
 }
 
 .arrowContainer:hover {
-  background-color: rgba(128, 128, 128, 0.5); /* Light gray on hover */
+  background-color: rgba(128, 128, 128, 0.5);
 }
 
 .player iframe {
   border-radius: 10px;
-  width: 90%; /* Responsive width */
-  height: 90%; /* Responsive height */
-  max-width: 1500px; /* Maintain max width */
-  max-height: 650px; /* Maintain max height */
+  width: 90%;
+  height: 90%;
+  max-width: 1500px;
+  max-height: 650px;
 }
 
 .loading {
-  color: white; /* White text for loading */
-  text-align: center; /* Center text */
-  font-size: 1.5rem; /* Increased font size */
-  margin-top: 20px; /* Space above loading text */
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 20px;
 }
 
 .no-preview {
-  color: #ccc; /* Light gray for no preview message */
-  text-align: center; /* Center text */
-  font-size: 1.2rem; /* Increased font size */
-  margin-top: 20px; /* Space above message */
+  color: #ccc;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 20px;
 }
 
-/* Responsive styles for smaller screens */
 @media (max-width: 600px) {
   .player {
-    padding: 1rem; /* Padding for small screens */
+    padding: 1rem;
   }
 
   .arrowContainer {
-    top: 10px; /* Adjust position for small screens */
-    left: 10px; /* Adjust position for small screens */
-    width: 30px; /* Smaller button */
-    height: 30px; /* Smaller button */
+    top: 10px;
+    left: 10px;
+    width: 30px;
+    height: 30px;
   }
 
   .player iframe {
-    width: 100%; /* Full width on small screens */
-    height: auto; /* Auto height for aspect ratio */
-    max-height: 300px; /* Limit height for smaller screens */
+    width: 100%;
+    height: auto;
+    max-height: 300px;
   }
 
   .loading,
   .no-preview {
-    font-size: 1.2rem; /* Slightly smaller font size for mobile */
+    font-size: 1.2rem;
   }
 }

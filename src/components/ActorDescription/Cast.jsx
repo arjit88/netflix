@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { FaArrowLeft } from "react-icons/fa"; // Import the left arrow icon
+import { FaArrowLeft } from "react-icons/fa";
 import "./Cast.css";
 
 const Cast = () => {

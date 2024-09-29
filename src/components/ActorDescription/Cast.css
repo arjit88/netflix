@@ -1,17 +1,17 @@
 body {
   margin: 0;
   font-family: "Arial", sans-serif;
-  background-color: #121212; /* Dark background for the body */
+  background-color: #121212;
 }
 
 .cast-container {
   position: relative;
-  height: 100vh; /* Full-screen height */
+  height: 100vh;
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  justify-content: center;
+  align-items: center;
   padding: 20px;
-  overflow: hidden; /* Hide overflow */
+  overflow: hidden;
 }
 
 .cast-background {
@@ -22,8 +22,8 @@ body {
   bottom: 0;
   background-size: cover;
   background-position: center;
-  filter: blur(8px); /* Blur effect for the background */
-  z-index: 1; /* Send it behind other elements */
+  filter: blur(8px);
+  z-index: 1;
 }
 
 .cast-background::before {
@@ -33,90 +33,90 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
-  z-index: 1; /* Send it behind content but above the background */
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
 .cast-content {
   position: relative;
-  z-index: 2; /* Bring content above background */
+  z-index: 2;
   display: flex;
-  align-items: center; /* Center items vertically */
-  justify-content: center; /* Center items horizontally */
-  gap: 40px; /* Increased space between photo and details */
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
 }
 
 .cast-photo {
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Shadow for depth */
-  height: 600px; /* Set a fixed height */
-  display: flex; /* Use flexbox to center the image */
-  align-items: center; /* Center items vertically */
-  justify-content: center; /* Center items horizontally */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cast-photo img {
-  width: 100%; /* Make the image take the full width */
-  height: 100%; /* Make the image take the full height */
-  object-fit: cover; /* Maintain aspect ratio and cover the area */
-  transition: transform 0.3s; /* Smooth zoom effect */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
 }
 
 .cast-photo img:hover {
-  transform: scale(1.05); /* Slight zoom effect on hover */
+  transform: scale(1.05);
 }
 
 .cast-details {
-  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
-  color: white; /* White text color for contrast */
-  padding: 20px; /* Padding around the text */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Soft shadow */
-  max-width: 500px; /* Max width for the details */
-  text-align: left; /* Left-align the text */
-  height: 600px; /* Increased height for details */
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  max-width: 500px;
+  text-align: left;
+  height: 600px;
   display: flex;
-  flex-direction: column; /* Arrange details in a column */
-  justify-content: flex-start; /* Align top */
-  overflow-y: auto; /* Enable vertical scrolling */
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
 
   /* Hide scrollbar for WebKit browsers (Chrome, Safari) */
-  scrollbar-width: thin; /* For Firefox */
-  scrollbar-color: transparent transparent; /* For Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
 }
 
 /* Hide scrollbar for WebKit browsers */
 .cast-details::-webkit-scrollbar {
-  width: 0; /* Hide scrollbar width */
-  background: transparent; /* No background */
+  width: 0;
+  background: transparent;
 }
 
 .cast-details::-webkit-scrollbar-thumb {
-  background: transparent; /* No thumb */
+  background: transparent;
 }
 
 .cast-details h1 {
-  font-size: 2.5rem; /* Larger title */
-  margin: 0; /* Remove margin */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Shadow for better readability */
+  font-size: 2.5rem;
+  margin: 0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .cast-details h2 {
-  font-size: 1.5rem; /* Subtitle size */
-  margin: 10px 0; /* Space above and below */
-  font-weight: 600; /* Bold weight */
+  font-size: 1.5rem;
+  margin: 10px 0;
+  font-weight: 600;
 }
 
 .cast-details p {
-  font-size: 1rem; /* Regular paragraph size */
-  line-height: 1.6; /* Increased line height for readability */
-  margin: 5px 0; /* Space between paragraphs */
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 5px 0;
 }
 
 .cast-details .bio-title {
-  font-weight: 700; /* Bolder title */
-  margin-top: 20px; /* Space above title */
+  font-weight: 700;
+  margin-top: 20px;
 }
 
 .spinnerss {
@@ -129,88 +129,88 @@ body {
 }
 
 .back-buttons {
-  position: absolute; /* Position it absolutely in the container */
-  top: 20px; /* Position from the top */
-  left: 20px; /* Position from the left */
-  padding: 10px 15px; /* Padding around the button */
-  background-color: rgba(255, 255, 255, 0.8); /* Light background */
-  color: #000; /* Black text */
-  border: none; /* No border */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s; /* Transition for hover effect */
-  z-index: 2; /* Ensure it's above other elements */
-  display: flex; /* Flexbox to align icon and text */
-  align-items: center; /* Center icon and text vertically */
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 15px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  z-index: 2;
+  display: flex;
+  align-items: center;
 }
 
 .back-buttons:hover {
-  background-color: rgba(255, 255, 255, 1); /* Slightly darker on hover */
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .back-buttons svg {
-  margin-right: 8px; /* Space between icon and text */
+  margin-right: 8px;
 }
 
 .filmography {
-  margin-top: 20px; /* Space above the filmography section */
+  margin-top: 20px;
 }
 
 .filmography h3 {
-  font-size: 1.5rem; /* Subtitle size for Filmography */
-  margin-bottom: 10px; /* Space below */
-  font-weight: 600; /* Bold weight */
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-weight: 600;
 }
 
 .filmography ul {
-  list-style-type: none; /* Remove default list styles */
-  padding: 0; /* Remove padding */
+  list-style-type: none;
+  padding: 0;
 }
 
 .filmography li {
-  font-size: 1rem; /* Regular size for list items */
-  margin: 5px 0; /* Space between items */
-  color: #ccc; /* Lighter color for text */
-  line-height: 1.4; /* Line height for readability */
+  font-size: 1rem;
+  margin: 5px 0;
+  color: #ccc;
+  line-height: 1.4;
 }
 
 @media (max-width: 768px) {
   .cast-photo {
-    display: none; /* Hide the cast photo on smaller screens */
+    display: none;
   }
 
   .cast-content {
-    flex-direction: column; /* Stack photo and details vertically */
-    align-items: center; /* Center items */
+    flex-direction: column;
+    align-items: center;
   }
 
   .cast-details {
-    max-width: 90%; /* Allow more width on smaller screens */
+    max-width: 90%;
   }
 
   .back-buttons {
-    top: 10px; /* Adjust position for smaller screens */
+    top: 10px;
     left: 10px;
   }
 }
 
 @media (max-width: 768px) {
   .back-buttons {
-    top: 10px; /* Position closer to the top */
-    left: 10px; /* Adjust left position */
+    top: 10px;
+    left: 10px;
   }
 }
 
 @media (max-width: 500px) {
   .cast-details h1 {
-    font-size: 2rem; /* Smaller title */
+    font-size: 2rem;
   }
 
   .cast-details h2 {
-    font-size: 1.2rem; /* Smaller subtitle */
+    font-size: 1.2rem;
   }
 
   .filmography h3 {
-    font-size: 1.2rem; /* Smaller subtitle for Filmography */
+    font-size: 1.2rem;
   }
 }

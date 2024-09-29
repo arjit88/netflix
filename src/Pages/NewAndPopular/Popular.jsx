@@ -20,10 +20,10 @@ const Popular = () => {
       const { data } = await axios.get(`${fetchUrl}${page}`);
       const newMovies = data.results.filter((movie) => {
         if (seenIds.current.has(movie.id)) {
-          return false; // Skip duplicates
+          return false;
         }
-        seenIds.current.add(movie.id); // Mark as seen
-        return true; // Keep the new movie
+        seenIds.current.add(movie.id);
+        return true;
       });
       setMovies((prevMovies) => [...prevMovies, ...newMovies]);
     } catch (error) {
@@ -75,7 +75,7 @@ const Popular = () => {
             .map((movie) => (
               <img
                 className="new-and-popular__poster"
-                key={movie.id} // Use movie.id as the key
+                key={movie.id}
                 src={`${base_url}${movie.poster_path || movie.backdrop_path}`}
                 alt={movie.title}
                 onClick={() => {

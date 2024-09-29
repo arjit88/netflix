@@ -1,9 +1,7 @@
-/* TvShows.css */
-
 .tv-shows {
   padding: 20px;
-  background-color: #141414; /* Dark background for contrast */
-  color: #ffffff; /* White text for readability */
+  background-color: #141414;
+  color: #ffffff;
   padding-top: 70px;
 }
 
@@ -11,41 +9,39 @@
   font-size: 2rem;
   margin-bottom: 20px;
   text-align: center;
-  text-transform: uppercase; /* Uppercase for a more striking header */
-  letter-spacing: 2px; /* Slight letter spacing */
-  color: #e50914; /* Netflix red for emphasis */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #e50914;
 }
 
 .tv-shows__posters {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px; /* Space between posters */
+  gap: 15px;
   cursor: pointer;
 }
 
 .tv-show__poster {
-  width: 180px; /* Set width for uniformity */
-  border-radius: 8px; /* Rounded corners for the posters */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+  width: 180px;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .tv-show__poster:hover {
-  transform: scale(1.05); /* Scale effect on hover */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7); /* Enhanced shadow on hover */
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
 }
 
-/* Loading text styling */
 .loading {
   text-align: center;
   margin: 20px 0;
-  color: #ffffff; /* Match text color with the background */
-  font-size: 1.2rem; /* Slightly larger font for loading */
-  animation: fadeIn 1s; /* Fade-in animation for loading */
+  color: #ffffff;
+  font-size: 1.2rem;
+  animation: fadeIn 1s;
 }
 
-/* Fade-in animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -55,34 +51,32 @@
   }
 }
 
-/* Responsive styles */
 @media (max-width: 600px) {
   .tv-show__poster {
-    width: 140px; /* Smaller width for mobile devices */
+    width: 140px;
   }
 
   .tv-shows h2 {
-    font-size: 1.5rem; /* Smaller header on mobile */
+    font-size: 1.5rem;
   }
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
   .tv-show__poster {
-    width: 160px; /* Adjust size for medium screens */
+    width: 160px;
   }
 
   .tv-shows h2 {
-    font-size: 1.8rem; /* Slightly smaller header on medium screens */
+    font-size: 1.8rem;
   }
 }
 
-/* Additional styles for larger screens */
 @media (min-width: 901px) {
   .tv-show__poster {
-    width: 200px; /* Larger width for desktop */
+    width: 200px;
   }
 
   .tv-shows h2 {
-    font-size: 2.5rem; /* Larger header on desktop */
+    font-size: 2.5rem;
   }
 }

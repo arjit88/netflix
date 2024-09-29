@@ -1,51 +1,47 @@
-/* NewAndPopular.css */
-
 .new-and-popular {
-  padding: 70px 20px; /* Added horizontal padding for smaller screens */
-  background-color: #141414; /* Dark background for contrast */
-  color: #ffffff; /* White text for readability */
+  padding: 70px 20px;
+  background-color: #141414;
+  color: #ffffff;
 }
 
 .new-and-popular h2 {
   font-size: 2rem;
   margin-bottom: 20px;
   text-align: center;
-  text-transform: uppercase; /* Uppercase for a more striking header */
-  letter-spacing: 2px; /* Slight letter spacing */
-  color: #e50914; /* Netflix red for emphasis */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #e50914;
 }
 
 .new-and-popular__posters {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px; /* Space between posters */
+  gap: 15px;
   cursor: pointer;
 }
 
 .new-and-popular__poster {
-  width: 180px; /* Set width for uniformity */
-  border-radius: 8px; /* Rounded corners for the posters */
-  transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s; /* Smooth transitions */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+  width: 180px;
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .new-and-popular__poster:hover {
-  transform: scale(1.05); /* Scale effect on hover */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7); /* Enhanced shadow on hover */
-  opacity: 0.9; /* Slight opacity change on hover */
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+  opacity: 0.9;
 }
 
-/* Loading text styling */
 .loading {
   text-align: center;
   margin: 20px 0;
-  color: #ffffff; /* Match text color with the background */
-  font-size: 1.2rem; /* Slightly larger font for loading */
-  animation: fadeIn 1s; /* Fade-in animation for loading */
+  color: #ffffff;
+  font-size: 1.2rem;
+  animation: fadeIn 1s;
 }
 
-/* Fade-in animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -55,33 +51,32 @@
   }
 }
 
-/* Responsive styles */
 @media (max-width: 600px) {
   .new-and-popular__poster {
-    width: 140px; /* Smaller width for mobile devices */
+    width: 140px;
   }
 
   .new-and-popular h2 {
-    font-size: 1.5rem; /* Smaller header on mobile */
+    font-size: 1.5rem;
   }
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
   .new-and-popular__poster {
-    width: 160px; /* Adjust size for medium screens */
+    width: 160px;
   }
 
   .new-and-popular h2 {
-    font-size: 1.8rem; /* Slightly smaller header on medium screens */
+    font-size: 1.8rem;
   }
 }
 
 @media (min-width: 901px) {
   .new-and-popular__poster {
-    width: 200px; /* Larger width for desktop */
+    width: 200px;
   }
 
   .new-and-popular h2 {
-    font-size: 2.5rem; /* Larger header on desktop */
+    font-size: 2.5rem;
   }
 }

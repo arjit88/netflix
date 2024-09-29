@@ -22,10 +22,10 @@ const Movies = () => {
       const newMovies = data.results.filter((movie) => {
         // Filter out movies already seen
         if (seenIds.current.has(movie.id)) {
-          return false; // Skip duplicates
+          return false;
         }
-        seenIds.current.add(movie.id); // Mark as seen
-        return true; // Keep the new movie
+        seenIds.current.add(movie.id);
+        return true;
       });
 
       setMovies((prevMovies) => [...prevMovies, ...newMovies]);
@@ -77,8 +77,8 @@ const Movies = () => {
             .map((movie) => (
               <img
                 className="movie__poster"
-                key={movie.id} // Use movie.id as the key
-                src={`${base_url}${movie.poster_path || movie.backdrop_path}`} // Fallback logic can be improved
+                key={movie.id}
+                src={`${base_url}${movie.poster_path || movie.backdrop_path}`}
                 alt={movie.title}
                 onClick={() => navigate(`/movieDescription/${movie.id}`)}
               />

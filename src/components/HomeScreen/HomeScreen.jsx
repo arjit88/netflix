@@ -43,7 +43,7 @@ const HomeScreen = () => {
       <Banner />
       {rows.map(({ title, fetchUrl, isLargeRow }, index) => (
         <Row
-          key={title} // Preferably use a unique ID if available
+          key={title}
           title={title}
           fetchUrl={fetchUrl}
           isLargeRow={isLargeRow}

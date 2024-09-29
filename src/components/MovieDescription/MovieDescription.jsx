@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { IoArrowBack } from "react-icons/io5"; // Import back arrow icon
+import { IoArrowBack } from "react-icons/io5";
 import "./MovieDescription.css";
 import Nav from "../Navbar/Nav";
 

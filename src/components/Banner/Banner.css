@@ -8,7 +8,7 @@
   mask-image: linear-gradient(to left, transparent, black 75%);
   -webkit-mask-image: linear-gradient(to left, transparent, black 75%);
   overflow-x: hidden;
-  transition: background-image 1s ease-in-out, opacity 1s ease-in-out; /* Added opacity transition */
+  transition: background-image 1s ease-in-out, opacity 1s ease-in-out;
   font-family: "Poppins", sans-serif;
 }
 
@@ -16,7 +16,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full height for loading */
+  height: 100vh;
 }
 
 .spinnerssss {
@@ -43,12 +43,12 @@
   margin-left: 2%;
   bottom: 20px;
   max-height: 305px;
-  transition: opacity 1s ease-in-out; /* Ensure content fades with the banner */
+  transition: opacity 1s ease-in-out;
 }
 
 .banner__title,
 .banner__description {
-  transition: opacity 1s ease-in-out; /* Ensure text fades together */
+  transition: opacity 1s ease-in-out;
 }
 
 .banner__title {
@@ -83,15 +83,15 @@
 }
 
 .fade {
-  opacity: 0; /* Fully transparent during fade */
-  transition: opacity 0.8s ease-in-out; /* Ensure all elements fade out together */
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
 }
 
 .banner__contents,
 .banner__title,
 .banner__description,
 .banner__buttons {
-  transition: opacity 0.8s ease-in-out; /* Ensure content fades together */
+  transition: opacity 0.8s ease-in-out;
 }
 
 .banner__button {
@@ -136,27 +136,26 @@
   transition: all 0.2s;
 }
 
-/* Media Queries for Responsiveness */
 @media (max-width: 768px) {
   .banner__title {
-    font-size: 2rem; /* Adjust title size for smaller screens */
+    font-size: 2rem;
   }
   .banner__description {
-    font-size: 0.9rem; /* Adjust description size */
-    max-width: 90%; /* Allow more width on smaller screens */
+    font-size: 0.9rem;
+    max-width: 90%;
   }
   .banner__buttons {
-    gap: 1rem; /* Space between buttons on smaller screens */
+    gap: 1rem;
   }
 }
 
 @media (max-width: 500px) {
   .banner__buttons .banner__button {
-    padding: 10px 14px; /* Adjust padding */
-    margin-right: 0; /* Reset margin for better stacking */
-    width: auto; /* Maintain auto width */
+    padding: 10px 14px;
+    margin-right: 0;
+    width: auto;
   }
   .banner--fadeBottom {
-    height: 58.5rem; /* Maintain original height */
+    height: 58.5rem;
   }
 }

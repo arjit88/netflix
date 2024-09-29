@@ -138,7 +138,7 @@
 .loading {
   color: rgba(255, 255, 255, 0.7);
   font-size: 14px;
-  margin-left: 5px; /* Adjust spacing */
+  margin-left: 5px;
 }
 
 @media (max-width: 800px) {

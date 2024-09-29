@@ -6,20 +6,20 @@
 
 .row__posters {
   display: flex;
-  flex-wrap: nowrap; /* Prevent wrapping */
-  overflow-x: auto; /* Horizontal scrolling */
+  flex-wrap: nowrap;
+  overflow-x: auto;
   padding: 20px;
 }
 
 .row__posters::-webkit-scrollbar {
-  display: none; /* Hide scrollbar */
+  display: none;
 }
 
 .row__poster {
   max-height: 200px;
   object-fit: contain;
   margin-right: 10px;
-  width: 100%; /* Full width for flex item */
+  width: 100%;
   transition: transform 350ms;
   cursor: pointer;
   border-radius: 8px;
@@ -38,13 +38,13 @@
 }
 
 .spinners {
-  border: 8px solid rgba(255, 255, 255, 0.3); /* Light gray border */
-  border-top: 8px solid red; /* Red top border */
+  border: 8px solid rgba(255, 255, 255, 0.3);
+  border-top: 8px solid red;
   border-radius: 50%;
-  width: 50px; /* Spinner size */
-  height: 50px; /* Spinner size */
-  animation: spin 1s linear infinite; /* Spin animation */
-  margin: 20px auto; /* Center spinner */
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
 }
 
 @keyframes spin {
@@ -57,42 +57,41 @@
 }
 
 .error-message {
-  color: red; /* Color for error messages */
+  color: red;
   text-align: center;
   font-size: 1.2rem;
   margin: 20px;
 }
 
-/* Media Queries for Responsiveness */
 @media (max-width: 1200px) {
   .row h2 {
-    font-size: 24px; /* Adjust title size */
+    font-size: 24px;
   }
   .row__posters {
-    padding: 10px; /* Adjust padding */
+    padding: 10px;
   }
   .row__poster {
-    width: calc(25% - 10px); /* Four posters per row */
+    width: calc(25% - 10px);
   }
 }
 
 @media (max-width: 800px) {
   .row h2 {
-    font-size: 20px; /* Adjust title size */
+    font-size: 20px;
   }
   .row__poster {
-    width: calc(33.33% - 10px); /* Three posters per row */
+    width: calc(33.33% - 10px);
   }
 }
 
 @media (max-width: 500px) {
   .row h2 {
-    font-size: 15px; /* Smaller title size */
+    font-size: 15px;
   }
   .row__posters {
-    padding: 5px; /* Further adjust padding */
+    padding: 5px;
   }
   .row__poster {
-    width: calc(50% - 10px); /* Two posters per row */
+    width: calc(50% - 10px);
   }
 }

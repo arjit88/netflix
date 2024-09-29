@@ -3,25 +3,25 @@
   position: absolute;
   top: 20px;
   left: 20px;
-  padding: 10px 15px; /* Padding around the button */
-  background-color: rgba(255, 255, 255, 0.8); /* Light background */
-  color: #000; /* Black text */
-  border: none; /* No border */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s; /* Transition for hover effect */
-  z-index: 2; /* Ensure it's above other elements */
-  display: flex; /* Flexbox to align icon and text */
-  align-items: center; /* Center icon and text vertically */
+  padding: 10px 15px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  z-index: 2;
+  display: flex;
+  align-items: center;
 }
 
 .back-button:hover {
-  background-color: rgba(255, 255, 255, 1); /* Slightly darker on hover */
+  background-color: rgba(255, 255, 255, 1);
   scale: 1.05;
 }
 
 .back-button svg {
-  margin-right: 8px; /* Space between icon and text */
+  margin-right: 8px;
 }
 
 .movie-description {
@@ -257,7 +257,6 @@
   transform: scale(0.98);
 }
 
-/* Responsive styles */
 @media (max-width: 950px) and (min-width: 900px) {
   .movie-description__poster {
     width: 70%;

@@ -26,7 +26,6 @@ const signUp = async (name, email, password) => {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
     await addDoc(collection(db, "users"), {
-      // Consider pluralizing "user" to "users"
       uid: user.uid,
       name,
       authProvider: "local",
@@ -55,7 +54,6 @@ const logOut = async () => {
   }
 };
 
-// Helper function to format Firebase error messages
 const formatFirebaseError = (error) => {
   return error.code.split("/")[1].split("-").join(" ") || "An error occurred";
 };
