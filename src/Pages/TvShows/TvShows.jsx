@@ -13,8 +13,9 @@ const TvShows = () => {
   const base_url = "https://image.tmdb.org/t/p/original/";
   const fetchUrl = `https://api.themoviedb.org/3/tv/popular?api_key=c4d2f5db860396b544127ac219cadde5&page=`;
 
+  const seenIds = useRef(new Set()); // Use a ref to track seen IDs
+
   const isValidShow = (show) => {
-    // Check if the show has a valid name, id, and a valid poster or backdrop path
     return (
       show.name && show.id != null && (show.poster_path || show.backdrop_path)
     );
@@ -23,15 +24,24 @@ const TvShows = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const request = await axios.get(`${fetchUrl}${page}`);
-      const validMovies = request.data.results.filter(isValidShow);
+      const { data } = await axios.get(`${fetchUrl}${page}`);
+      const validMovies = data.results.filter(isValidShow);
 
-      if (validMovies.length === 0) {
-        console.error("No valid TV shows found for the current page.");
+      // Filter out already seen shows
+      const newMovies = validMovies.filter((show) => {
+        if (seenIds.current.has(show.id)) {
+          return false; // Skip already seen shows
+        }
+        seenIds.current.add(show.id); // Mark this show as seen
+        return true; // Keep the new show
+      });
+
+      if (newMovies.length === 0) {
+        console.error("No new valid TV shows found for the current page.");
         return;
       }
 
-      setMovies((prevShows) => [...prevShows, ...validMovies]);
+      setMovies((prevShows) => [...prevShows, ...newMovies]);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -64,7 +74,7 @@ const TvShows = () => {
         observer.current.unobserve(lastShowElement);
       }
     };
-  }, [loading, movies]);
+  }, [loading]);
 
   return (
     <>
@@ -72,19 +82,20 @@ const TvShows = () => {
       <div className="tv-shows">
         <h2>TV Shows</h2>
         <div className="tv-shows__posters">
-          {movies
-            .filter(isValidShow) // Ensure only valid shows are rendered
-            .map((show, index) => (
-              <img
-                className="tv-show__poster"
-                key={index}
-                src={`${base_url}${show.poster_path || show.backdrop_path}`}
-                alt={show.name}
-                onClick={() => navigate(`/movieDescription/${show.id}`)}
-              />
-            ))}
-          <div id="last-show" style={{ height: "20px" }} />{" "}
-          {/* Empty div to act as the target for observer */}
+          {movies.filter(isValidShow).map((show) => (
+            <img
+              className="tv-show__poster"
+              key={show.id} // Use show.id as the key
+              src={`${base_url}${
+                show.poster_path ||
+                show.backdrop_path ||
+                "default_image_path.jpg"
+              }`} // Fallback image
+              alt={show.name}
+              onClick={() => navigate(`/movieDescription/${show.id}`)}
+            />
+          ))}
+          <div id="last-show" style={{ height: "20px" }} />
         </div>
         {loading && <p className="loading">Loading more...</p>}
       </div>

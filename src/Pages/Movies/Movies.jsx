@@ -13,13 +13,24 @@ const Movies = () => {
   const base_url = "https://image.tmdb.org/t/p/original/";
   const fetchUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=c4d2f5db860396b544127ac219cadde5&page=`;
 
+  const seenIds = useRef(new Set()); // Track seen movie IDs
+
   const fetchData = async () => {
     setLoading(true);
     try {
-      const request = await axios.get(`${fetchUrl}${page}`);
-      setMovies((prevMovies) => [...prevMovies, ...request.data.results]);
+      const { data } = await axios.get(`${fetchUrl}${page}`);
+      const newMovies = data.results.filter((movie) => {
+        // Filter out movies already seen
+        if (seenIds.current.has(movie.id)) {
+          return false; // Skip duplicates
+        }
+        seenIds.current.add(movie.id); // Mark as seen
+        return true; // Keep the new movie
+      });
+
+      setMovies((prevMovies) => [...prevMovies, ...newMovies]);
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching movies:", error);
     } finally {
       setLoading(false);
     }
@@ -50,33 +61,26 @@ const Movies = () => {
         observer.current.unobserve(lastMovieElement);
       }
     };
-  }, [loading, movies]);
+  }, [loading]);
 
   return (
     <>
       <Nav />
-
       <div className="movies">
         <h2>Movies</h2>
         <div className="movies__posters">
           {movies
-            ?.filter(
+            .filter(
               (movie) =>
                 movie.title && (movie.poster_path || movie.backdrop_path)
             ) // Filter out movies with empty title or missing photos
-            .map((movie, index) => (
+            .map((movie) => (
               <img
                 className="movie__poster"
-                key={index}
-                src={`${base_url}${movie.poster_path || movie.backdrop_path}`}
+                key={movie.id} // Use movie.id as the key
+                src={`${base_url}${movie.poster_path || movie.backdrop_path}`} // Fallback logic can be improved
                 alt={movie.title}
-                onClick={() => {
-                  if (movie.id) {
-                    navigate(`/movieDescription/${movie.id}`);
-                  } else {
-                    console.error("Movie ID is undefined for:", movie);
-                  }
-                }}
+                onClick={() => navigate(`/movieDescription/${movie.id}`)}
               />
             ))}
           <div id="last-movie" style={{ height: "20px" }} />{" "}

@@ -1,5 +1,3 @@
-import React from "react";
-import "./HomeScreen.css";
 import Nav from "../Navbar/Nav";
 import Banner from "../Banner/Banner";
 import Row from "../Row/Row";
@@ -7,40 +5,50 @@ import requests from "../../config/Requests";
 import Footer from "../Footer/Footer";
 
 const HomeScreen = () => {
+  const rows = [
+    {
+      title: "NETFLIX ORIGINALS",
+      fetchUrl: requests.fetchNetflixOriginals,
+      isLargeRow: true,
+    },
+    { title: "Trending Now", fetchUrl: requests.fetchTrending },
+    { title: "Up Coming", fetchUrl: requests.fetchUpComing },
+    { title: "Popular", fetchUrl: requests.fetchPopular },
+    { title: "Top Rated", fetchUrl: requests.fetchTopRated },
+    { title: "Action", fetchUrl: requests.fetchActionMovies },
+    { title: "Horror", fetchUrl: requests.fetchHorroMovies },
+    { title: "Romance", fetchUrl: requests.fetchRomanceMovies },
+    { title: "Now Playing", fetchUrl: requests.fetchNowPlaying },
+    { title: "Animated", fetchUrl: requests.fetchAnimationMovies },
+    { title: "Crime", fetchUrl: requests.fetchCrimeMovies },
+    { title: "Comedy", fetchUrl: requests.fetchComedyMovies },
+    { title: "Science Fiction", fetchUrl: requests.fetchSciFiMovies },
+    { title: "Adventure", fetchUrl: requests.fetchAdventureMovies },
+    { title: "Drama", fetchUrl: requests.fetchDramaMovies },
+    { title: "Family", fetchUrl: requests.fetchFamilyMovies },
+    { title: "Fantasy", fetchUrl: requests.fetchFantasyMovies },
+    { title: "Mystery", fetchUrl: requests.fetchMysteryMovies },
+    { title: "Music", fetchUrl: requests.fetchMusicMovies },
+    { title: "Thriller", fetchUrl: requests.fetchThrillerMovies },
+    { title: "War", fetchUrl: requests.fetchWarMovies },
+    { title: "Western", fetchUrl: requests.fetchWesternMovies },
+    { title: "History", fetchUrl: requests.fetchHistoryMovies },
+    { title: "TV Special", fetchUrl: requests.fetchTVMovies },
+    { title: "Documentary", fetchUrl: requests.fetchDocumentaries },
+  ];
+
   return (
     <div className="homeScreen">
       <Nav />
       <Banner />
-      <Row
-        title="NETFLIX ORIGINALS"
-        fetchUrl={requests.fetchNetflixOriginals}
-        isLargeRow
-      />
-      <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
-      <Row title="Up Coming" fetchUrl={requests.fetchUpComing} />
-      <Row title="Popular" fetchUrl={requests.fetchPopular} />
-      <Row title="Top Rated" fetchUrl={requests.fetchTopRated} />
-      <Row title="Action" fetchUrl={requests.fetchActionMovies} />
-      <Row title="Horror" fetchUrl={requests.fetchHorroMovies} />
-      <Row title="Romance" fetchUrl={requests.fetchRomanceMovies} />
-      <Row title="Now Playing" fetchUrl={requests.fetchNowPlaying} />
-      <Row title="Animated" fetchUrl={requests.fetchAnimationMovies} />
-      <Row title="Crime" fetchUrl={requests.fetchCrimeMovies} />
-      <Row title="Comedy" fetchUrl={requests.fetchComedyMovies} />
-      <Row title="Science Fiction" fetchUrl={requests.fetchSciFiMovies} />
-      <Row title="Adventure" fetchUrl={requests.fetchAdventureMovies} />
-      <Row title="Drama" fetchUrl={requests.fetchDramaMovies} />
-      <Row title="Family" fetchUrl={requests.fetchFamilyMovies} />
-      <Row title="Fantasy" fetchUrl={requests.fetchFantasyMovies} />
-      <Row title="Mystery" fetchUrl={requests.fetchMysteryMovies} />
-      <Row title="Music" fetchUrl={requests.fetchMusicMovies} />
-      <Row title="Thriller" fetchUrl={requests.fetchThrillerMovies} />
-      <Row title="War" fetchUrl={requests.fetchWarMovies} />
-      <Row title="Western" fetchUrl={requests.fetchWesternMovies} />
-      <Row title="History" fetchUrl={requests.fetchHistoryMovies} />
-      <Row title="Tv Special" fetchUrl={requests.fetchTVMovies} />
-      <Row title="Documentary" fetchUrl={requests.fetchDocumentaries} />
-
+      {rows.map(({ title, fetchUrl, isLargeRow }, index) => (
+        <Row
+          key={title} // Preferably use a unique ID if available
+          title={title}
+          fetchUrl={fetchUrl}
+          isLargeRow={isLargeRow}
+        />
+      ))}
       <Footer />
     </div>
   );

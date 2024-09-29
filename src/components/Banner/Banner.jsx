@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./Banner.css";
 import axios from "../../config/axios";
 import requests from "../../config/Requests";
@@ -9,19 +9,25 @@ import { useNavigate } from "react-router-dom";
 const Banner = () => {
   const [movies, setMovies] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [fade, setFade] = useState(false); // State for fade effect
+  const [fade, setFade] = useState(false);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
-      const request = await axios.get(requests.fetchUpComing);
-      const validMovies = request.data.results.filter(
-        (movie) => movie.backdrop_path
-      );
-      setMovies(validMovies);
-
-      if (validMovies.length > 0) {
-        setCurrentIndex(0);
+      try {
+        const request = await axios.get(requests.fetchUpComing);
+        const validMovies = request.data.results.filter(
+          (movie) => movie.backdrop_path
+        );
+        setMovies(validMovies);
+        if (validMovies.length > 0) {
+          setCurrentIndex(0);
+        }
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -29,33 +35,44 @@ const Banner = () => {
   }, []);
 
   useEffect(() => {
+    if (movies.length === 0) return;
+
     const interval = setInterval(() => {
       setFade(true); // Start fading out
 
+      // Wait for fade-out to complete before changing the movie
       setTimeout(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % movies.length); // Cycle through movies
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % movies.length);
         setFade(false); // Fade back in
-      }, 1000); // Time to wait before changing the image and text
+      }, 800); // Duration of the fade-out
     }, 6000); // Change background every 6 seconds
 
     return () => clearInterval(interval);
   }, [movies]);
 
-  const truncate = (string, number) => {
+  const truncate = (string, number, customEllipsis = "...") => {
     return string?.length > number
-      ? string.substr(0, number - 1) + "..."
+      ? string.substr(0, number - 1) + customEllipsis
       : string;
   };
 
+  if (loading) {
+    return (
+      <div className="banner loading">
+        <div className="spinnerssss"></div>
+      </div>
+    );
+  }
+
   if (movies.length === 0) {
-    return <div className="banner">Loading...</div>;
+    return <div className="banner">No Movies Available</div>;
   }
 
   const movie = movies[currentIndex];
 
   return (
     <header
-      className={`banner`}
+      className={`banner ${fade ? "fade" : ""}`}
       style={{
         backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie.backdrop_path}")`,
         backgroundSize: "cover",
@@ -69,7 +86,7 @@ const Banner = () => {
             movie.original_name ||
             "No Title Available"}
         </h1>
-        <div className="banner__buttons">
+        <div className={`banner__buttons ${fade ? "fade" : ""}`}>
           <button
             className="banner__button"
             onClick={() =>
@@ -78,7 +95,7 @@ const Banner = () => {
               )
             }
           >
-            <img src={play_icon} alt="play_icon" /> Play
+            <img src={play_icon} alt="Play" /> Play
           </button>
           <button
             className="banner__button dark"
@@ -90,7 +107,7 @@ const Banner = () => {
               )
             }
           >
-            <img src={info_icon} alt="info_icon" />
+            <img src={info_icon} alt="More Info" />
             More Info
           </button>
         </div>

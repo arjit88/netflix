@@ -15,19 +15,31 @@ const Login = () => {
   const handleClick = async (event) => {
     event.preventDefault();
     setLoading(true);
-    if (signState === "Sign In") {
-      await logIn(email, password);
-    } else {
-      await signUp(name, email, password);
+
+    try {
+      if (signState === "Sign In") {
+        await logIn(email, password);
+      } else {
+        await signUp(name, email, password);
+      }
+      // Handle successful sign-in or sign-up
+    } catch (error) {
+      console.error("Error during authentication:", error);
+      // Handle error (show message to user, etc.)
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
-  return loading ? (
-    <div className="login-spinner">
-      <img src={netflix_spinner} alt="netflix_spinner" />
-    </div>
-  ) : (
+  if (loading) {
+    return (
+      <div className="login-spinner">
+        <img src={netflix_spinner} alt="Loading..." />
+      </div>
+    );
+  }
+
+  return (
     <>
       {signIn ? (
         <AuthPage />
@@ -36,7 +48,7 @@ const Login = () => {
           <header className="signup__header">
             <img
               src="/netflix-logo.png"
-              alt="logo"
+              alt="Netflix Logo"
               className="netflix_signup_logo"
               onClick={() => setSignIn(true)}
             />
@@ -44,8 +56,8 @@ const Login = () => {
 
           <div className="login-form">
             <h1>{signState}</h1>
-            <form>
-              {signState === "Sign Up" ? (
+            <form onSubmit={handleClick}>
+              {signState === "Sign Up" && (
                 <div>
                   <label htmlFor="name">
                     Name<span className="form__span">*</span>
@@ -59,8 +71,6 @@ const Login = () => {
                     onChange={(e) => setName(e.target.value)}
                   />
                 </div>
-              ) : (
-                <></>
               )}
               <div>
                 <label htmlFor="email">
@@ -88,33 +98,19 @@ const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <button onClick={handleClick} type="submit">
-                {signState}
-              </button>
+              <button type="submit">{signState}</button>
             </form>
 
             <div className="form-switch">
               {signState === "Sign In" ? (
                 <p>
                   New to Netflix?
-                  <span
-                    onClick={() => {
-                      setSignState("Sign Up");
-                    }}
-                  >
-                    Sign Up
-                  </span>
+                  <span onClick={() => setSignState("Sign Up")}> Sign Up</span>
                 </p>
               ) : (
                 <p>
-                  Already have an account??
-                  <span
-                    onClick={() => {
-                      setSignState("Sign In");
-                    }}
-                  >
-                    Sign In
-                  </span>
+                  Already have an account?
+                  <span onClick={() => setSignState("Sign In")}> Sign In</span>
                 </p>
               )}
             </div>

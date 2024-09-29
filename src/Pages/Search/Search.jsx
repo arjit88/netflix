@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa"; // Import the back arrow icon
 import "./Search.css";
 
 const Search = () => {
@@ -8,6 +9,7 @@ const Search = () => {
   const [results, setResults] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(""); // Added error state
   const navigate = useNavigate();
 
   const apiKey = "c4d2f5db860396b544127ac219cadde5";
@@ -24,8 +26,10 @@ const Search = () => {
             ? response.data.results
             : [...results, ...response.data.results]
         );
+        setError(""); // Clear error on new search
       } catch (error) {
         console.error("Error fetching search results:", error);
+        setError("An error occurred while fetching results."); // Set error message
       } finally {
         setLoading(false);
       }
@@ -70,20 +74,34 @@ const Search = () => {
 
   return (
     <div className="search-page">
-      <input
-        type="text"
-        placeholder="Search for movies, TV shows, genres..."
-        value={query}
-        onChange={handleInputChange}
-        className="search-input"
-      />
+      <div className="search-bar">
+        <button className="back-buttonss" onClick={() => navigate(-1)}>
+          <FaArrowLeft /> Back
+        </button>
+        <input
+          type="text"
+          placeholder="Search for movies, TV shows, genres..."
+          value={query}
+          onChange={handleInputChange}
+          className="search-input"
+        />
+      </div>
+
+      {/* Centered messages */}
+      <div className="message-container">
+        {error && <p className="error-message">{error}</p>}
+        {results.length === 0 && !loading && (
+          <p className="no-results">No results found.</p>
+        )}
+      </div>
+
       <div className="search-results">
         {results
           .filter(
             (item) =>
               item.poster_path &&
               (item.media_type === "movie" ? item.title : item.name)
-          ) // Filter out empty posters and names
+          )
           .map((item) => (
             <div key={item.id} className="search-item">
               {item.media_type === "movie" && item.poster_path && (

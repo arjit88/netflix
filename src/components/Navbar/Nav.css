@@ -135,6 +135,12 @@
   opacity: 1;
 }
 
+.loading {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  margin-left: 5px; /* Adjust spacing */
+}
+
 @media (max-width: 800px) {
   .nav__contents {
     padding: 20px 4%;

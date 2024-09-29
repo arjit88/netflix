@@ -2,17 +2,18 @@ import React, { useEffect, useState } from "react";
 import "./Player.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Player = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [apiData, setApiData] = useState({
+  const [videoData, setVideoData] = useState({
     name: "",
     key: "",
-    published_at: "",
-    typeof: "",
   });
+  const [loading, setLoading] = useState(true);
 
   const options = {
     method: "GET",
@@ -24,30 +25,65 @@ const Player = () => {
   };
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`,
-      options
-    )
-      .then((response) => response.json())
-      .then((response) => setApiData(response.results[0]))
-      .catch((err) => console.error(err));
-  }, []);
+    const fetchVideo = async () => {
+      try {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`,
+          options
+        );
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        if (data.results.length > 0) {
+          setVideoData(data.results[0]);
+        } else {
+          toast.error("No video found for this movie.");
+        }
+      } catch (error) {
+        console.error(error);
+        toast.error("An error occurred while fetching the video.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchVideo();
+  }, [id, options]);
 
   return (
     <div className="player">
-      <div className="arrowContainer" onClick={() => navigate("/")}>
+      <div
+        className="arrowContainer"
+        onClick={() => navigate(-2)}
+        aria-label="Go back"
+      >
         <FaArrowLeft size={24} color="white" />
       </div>
-      <iframe
-        width="90%"
-        height="90%"
-        src={`https://www.youtube.com/embed/${
-          apiData?.key ?? "No preview available for this movie"
-        }`}
-        title="trailer"
-        frameBorder="0"
-        allowFullScreen
-      ></iframe>
+
+      {loading ? (
+        <div className="loading">Loading video...</div>
+      ) : (
+        <>
+          {videoData.key ? (
+            <iframe
+              className="video-iframe"
+              src={`https://www.youtube.com/embed/${videoData.key}`}
+              title={videoData.name || "Trailer"}
+              frameBorder="0"
+              allowFullScreen
+              loading="lazy"
+            ></iframe>
+          ) : (
+            <div className="no-preview">
+              No preview available for this movie
+            </div>
+          )}
+        </>
+      )}
+      <ToastContainer />
     </div>
   );
 };

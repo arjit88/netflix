@@ -17,6 +17,7 @@ import Search from "./Pages/Search/Search.jsx";
 import TvShows from "./Pages/TvShows/TvShows.jsx";
 import Movies from "./Pages/Movies/Movies.jsx";
 import Popular from "./Pages/NewAndPopular/Popular.jsx";
+import Cast from "./components/ActorDescription/Cast.jsx";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,11 @@ const router = createBrowserRouter([
   {
     path: "/search",
     element: <Search />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/cast/:id",
+    element: <Cast />,
     errorElement: <ErrorPage />,
   },
 ]);

@@ -5,21 +5,21 @@
 }
 
 .row__posters {
-  width: 100%;
   display: flex;
-  overflow-x: scroll;
+  flex-wrap: nowrap; /* Prevent wrapping */
+  overflow-x: auto; /* Horizontal scrolling */
   padding: 20px;
 }
 
 .row__posters::-webkit-scrollbar {
-  display: none;
+  display: none; /* Hide scrollbar */
 }
 
 .row__poster {
   max-height: 200px;
   object-fit: contain;
   margin-right: 10px;
-  width: 100%;
+  width: 100%; /* Full width for flex item */
   transition: transform 350ms;
   cursor: pointer;
   border-radius: 8px;
@@ -27,37 +27,72 @@
 
 .row__poster:hover {
   transform: scale(1.08);
-  opacity: 1;
 }
 
 .row__posterLarge {
   max-height: 350px;
-  border-radius: 8px;
 }
 
 .row__posterLarge:hover {
   transform: scale(1.09);
-  opacity: 1;
+}
+
+.spinners {
+  border: 8px solid rgba(255, 255, 255, 0.3); /* Light gray border */
+  border-top: 8px solid red; /* Red top border */
+  border-radius: 50%;
+  width: 50px; /* Spinner size */
+  height: 50px; /* Spinner size */
+  animation: spin 1s linear infinite; /* Spin animation */
+  margin: 20px auto; /* Center spinner */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.error-message {
+  color: red; /* Color for error messages */
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 20px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+  .row h2 {
+    font-size: 24px; /* Adjust title size */
+  }
+  .row__posters {
+    padding: 10px; /* Adjust padding */
+  }
+  .row__poster {
+    width: calc(25% - 10px); /* Four posters per row */
+  }
 }
 
 @media (max-width: 800px) {
   .row h2 {
-    font-size: 20px;
+    font-size: 20px; /* Adjust title size */
   }
-  .row .row__posters {
-    margin-top: 20px;
-    margin-bottom: 0;
-  }
-  .row__posters img {
-    width: 200px;
+  .row__poster {
+    width: calc(33.33% - 10px); /* Three posters per row */
   }
 }
 
 @media (max-width: 500px) {
   .row h2 {
-    font-size: 15px;
+    font-size: 15px; /* Smaller title size */
   }
-  .row__posters img {
-    width: 192px;
+  .row__posters {
+    padding: 5px; /* Further adjust padding */
+  }
+  .row__poster {
+    width: calc(50% - 10px); /* Two posters per row */
   }
 }

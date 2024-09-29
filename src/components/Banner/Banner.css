@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
 .banner {
   position: relative;
   color: white;
@@ -6,38 +8,68 @@
   mask-image: linear-gradient(to left, transparent, black 75%);
   -webkit-mask-image: linear-gradient(to left, transparent, black 75%);
   overflow-x: hidden;
-  transition: background-image 1s ease-in-out; /* Smooth background transition */
+  transition: background-image 1s ease-in-out, opacity 1s ease-in-out; /* Added opacity transition */
+  font-family: "Poppins", sans-serif;
+}
+
+.banner.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height for loading */
+}
+
+.spinnerssss {
+  border: 8px solid rgba(255, 255, 255, 0.3);
+  border-top: 8px solid white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .banner__contents {
   position: absolute;
-  width: 100%;
+  width: 90%;
   margin-left: 2%;
-  bottom: 0;
-  height: 305px;
-  transition: opacity 1s ease-in-out; /* Smooth opacity transition for contents */
+  bottom: 20px;
+  max-height: 305px;
+  transition: opacity 1s ease-in-out; /* Ensure content fades with the banner */
+}
+
+.banner__title,
+.banner__description {
+  transition: opacity 1s ease-in-out; /* Ensure text fades together */
 }
 
 .banner__title {
-  width: 90%;
-  margin-bottom: 10px;
-  font-size: 2.2rem;
+  width: 100%;
+  margin-bottom: 8px;
+  font-size: 2.5rem;
   font-weight: 600;
   padding-bottom: 0.3rem;
-  color: rgba(255, 255, 255, 0.7);
-  transition: opacity 1s ease-in-out; /* Smooth opacity transition */
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .banner__description {
   max-width: 700px;
-  font-size: 17px;
-  width: 45rem;
-  line-height: 1.5;
-  padding-top: 1rem;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1.6;
+  padding-top: 0.5rem;
+  margin-bottom: 1rem;
   font-weight: 300;
-  height: 80px;
-  color: rgba(255, 255, 255, 0.7);
-  transition: opacity 1s ease-in-out; /* Smooth opacity transition */
+  height: auto;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .banner--fadeBottom {
@@ -52,10 +84,14 @@
 
 .fade {
   opacity: 0; /* Fully transparent during fade */
+  transition: opacity 0.8s ease-in-out; /* Ensure all elements fade out together */
 }
 
+.banner__contents,
+.banner__title,
+.banner__description,
 .banner__buttons {
-  display: flex;
+  transition: opacity 0.8s ease-in-out; /* Ensure content fades together */
 }
 
 .banner__button {
@@ -70,15 +106,14 @@
   align-items: center;
   gap: 10px;
   font-size: 15px;
-  font-weight: 600;
   margin-right: 1rem;
   background-color: #6d6d6eb3;
-  padding-bottom: 0.5rem;
   transition: transform 400ms;
 }
 
 .banner__button:hover {
-  scale: 1.08;
+  transform: scale(1.08);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .banner__button img {
@@ -89,11 +124,10 @@
 .dark {
   color: #fff;
   background-color: #6d6d6eb3;
-  transition: transform 400ms;
 }
 
 .dark:hover {
-  scale: 1.08;
+  transform: scale(1.08);
 }
 
 .banner__button:hover {
@@ -102,13 +136,27 @@
   transition: all 0.2s;
 }
 
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .banner__title {
+    font-size: 2rem; /* Adjust title size for smaller screens */
+  }
+  .banner__description {
+    font-size: 0.9rem; /* Adjust description size */
+    max-width: 90%; /* Allow more width on smaller screens */
+  }
+  .banner__buttons {
+    gap: 1rem; /* Space between buttons on smaller screens */
+  }
+}
+
 @media (max-width: 500px) {
   .banner__buttons .banner__button {
-    padding: 10px 14px;
-    gap: 5px;
-    font-size: 12px;
+    padding: 10px 14px; /* Adjust padding */
+    margin-right: 0; /* Reset margin for better stacking */
+    width: auto; /* Maintain auto width */
   }
   .banner--fadeBottom {
-    height: 58.5rem;
+    height: 58.5rem; /* Maintain original height */
   }
 }

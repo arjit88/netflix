@@ -1,0 +1,216 @@
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #121212; /* Dark background for the body */
+}
+
+.cast-container {
+  position: relative;
+  height: 100vh; /* Full-screen height */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  padding: 20px;
+  overflow: hidden; /* Hide overflow */
+}
+
+.cast-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px); /* Blur effect for the background */
+  z-index: 1; /* Send it behind other elements */
+}
+
+.cast-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+  z-index: 1; /* Send it behind content but above the background */
+}
+
+.cast-content {
+  position: relative;
+  z-index: 2; /* Bring content above background */
+  display: flex;
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  gap: 40px; /* Increased space between photo and details */
+}
+
+.cast-photo {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* Shadow for depth */
+  height: 600px; /* Set a fixed height */
+  display: flex; /* Use flexbox to center the image */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+}
+
+.cast-photo img {
+  width: 100%; /* Make the image take the full width */
+  height: 100%; /* Make the image take the full height */
+  object-fit: cover; /* Maintain aspect ratio and cover the area */
+  transition: transform 0.3s; /* Smooth zoom effect */
+}
+
+.cast-photo img:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.cast-details {
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  color: white; /* White text color for contrast */
+  padding: 20px; /* Padding around the text */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Soft shadow */
+  max-width: 500px; /* Max width for the details */
+  text-align: left; /* Left-align the text */
+  height: 600px; /* Increased height for details */
+  display: flex;
+  flex-direction: column; /* Arrange details in a column */
+  justify-content: flex-start; /* Align top */
+  overflow-y: auto; /* Enable vertical scrolling */
+
+  /* Hide scrollbar for WebKit browsers (Chrome, Safari) */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: transparent transparent; /* For Firefox */
+}
+
+/* Hide scrollbar for WebKit browsers */
+.cast-details::-webkit-scrollbar {
+  width: 0; /* Hide scrollbar width */
+  background: transparent; /* No background */
+}
+
+.cast-details::-webkit-scrollbar-thumb {
+  background: transparent; /* No thumb */
+}
+
+.cast-details h1 {
+  font-size: 2.5rem; /* Larger title */
+  margin: 0; /* Remove margin */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Shadow for better readability */
+}
+
+.cast-details h2 {
+  font-size: 1.5rem; /* Subtitle size */
+  margin: 10px 0; /* Space above and below */
+  font-weight: 600; /* Bold weight */
+}
+
+.cast-details p {
+  font-size: 1rem; /* Regular paragraph size */
+  line-height: 1.6; /* Increased line height for readability */
+  margin: 5px 0; /* Space between paragraphs */
+}
+
+.cast-details .bio-title {
+  font-weight: 700; /* Bolder title */
+  margin-top: 20px; /* Space above title */
+}
+
+.spinnerss {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.back-buttons {
+  position: absolute; /* Position it absolutely in the container */
+  top: 20px; /* Position from the top */
+  left: 20px; /* Position from the left */
+  padding: 10px 15px; /* Padding around the button */
+  background-color: rgba(255, 255, 255, 0.8); /* Light background */
+  color: #000; /* Black text */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Transition for hover effect */
+  z-index: 2; /* Ensure it's above other elements */
+  display: flex; /* Flexbox to align icon and text */
+  align-items: center; /* Center icon and text vertically */
+}
+
+.back-buttons:hover {
+  background-color: rgba(255, 255, 255, 1); /* Slightly darker on hover */
+}
+
+.back-buttons svg {
+  margin-right: 8px; /* Space between icon and text */
+}
+
+.filmography {
+  margin-top: 20px; /* Space above the filmography section */
+}
+
+.filmography h3 {
+  font-size: 1.5rem; /* Subtitle size for Filmography */
+  margin-bottom: 10px; /* Space below */
+  font-weight: 600; /* Bold weight */
+}
+
+.filmography ul {
+  list-style-type: none; /* Remove default list styles */
+  padding: 0; /* Remove padding */
+}
+
+.filmography li {
+  font-size: 1rem; /* Regular size for list items */
+  margin: 5px 0; /* Space between items */
+  color: #ccc; /* Lighter color for text */
+  line-height: 1.4; /* Line height for readability */
+}
+
+@media (max-width: 768px) {
+  .cast-photo {
+    display: none; /* Hide the cast photo on smaller screens */
+  }
+
+  .cast-content {
+    flex-direction: column; /* Stack photo and details vertically */
+    align-items: center; /* Center items */
+  }
+
+  .cast-details {
+    max-width: 90%; /* Allow more width on smaller screens */
+  }
+
+  .back-buttons {
+    top: 10px; /* Adjust position for smaller screens */
+    left: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .back-buttons {
+    top: 10px; /* Position closer to the top */
+    left: 10px; /* Adjust left position */
+  }
+}
+
+@media (max-width: 500px) {
+  .cast-details h1 {
+    font-size: 2rem; /* Smaller title */
+  }
+
+  .cast-details h2 {
+    font-size: 1.2rem; /* Smaller subtitle */
+  }
+
+  .filmography h3 {
+    font-size: 1.2rem; /* Smaller subtitle for Filmography */
+  }
+}

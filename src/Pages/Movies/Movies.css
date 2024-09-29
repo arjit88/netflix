@@ -1,7 +1,7 @@
 /* Movies.css */
 
 .movies {
-  padding: 70px;
+  padding: 70px 20px; /* Added horizontal padding for smaller screens */
   background-color: #141414; /* Dark background for contrast */
   color: #ffffff; /* White text for readability */
 }
@@ -26,13 +26,14 @@
 .movie__poster {
   width: 180px; /* Set width for uniformity */
   border-radius: 8px; /* Rounded corners for the posters */
-  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+  transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s; /* Added opacity transition */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
 }
 
 .movie__poster:hover {
   transform: scale(1.05); /* Scale effect on hover */
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7); /* Enhanced shadow on hover */
+  opacity: 0.9; /* Slight opacity change on hover */
 }
 
 /* Loading text styling */
@@ -62,5 +63,25 @@
 
   .movies h2 {
     font-size: 1.5rem; /* Smaller header on mobile */
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .movie__poster {
+    width: 160px; /* Adjust size for medium screens */
+  }
+
+  .movies h2 {
+    font-size: 1.8rem; /* Slightly smaller header on medium screens */
+  }
+}
+
+@media (min-width: 901px) {
+  .movie__poster {
+    width: 200px; /* Larger width for desktop */
+  }
+
+  .movies h2 {
+    font-size: 2.5rem; /* Larger header on desktop */
   }
 }

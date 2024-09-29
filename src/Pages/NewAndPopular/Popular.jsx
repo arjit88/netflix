@@ -12,14 +12,23 @@ const Popular = () => {
   const observer = useRef();
   const base_url = "https://image.tmdb.org/t/p/original/";
   const fetchUrl = `https://api.themoviedb.org/3/movie/popular?api_key=c4d2f5db860396b544127ac219cadde5&page=`;
+  const seenIds = useRef(new Set()); // Track seen movie IDs
 
   const fetchData = async () => {
     setLoading(true);
     try {
-      const request = await axios.get(`${fetchUrl}${page}`);
-      setMovies((prevMovies) => [...prevMovies, ...request.data.results]);
+      const { data } = await axios.get(`${fetchUrl}${page}`);
+      const newMovies = data.results.filter((movie) => {
+        if (seenIds.current.has(movie.id)) {
+          return false; // Skip duplicates
+        }
+        seenIds.current.add(movie.id); // Mark as seen
+        return true; // Keep the new movie
+      });
+      setMovies((prevMovies) => [...prevMovies, ...newMovies]);
     } catch (error) {
-      console.error(error);
+      console.error("Error fetching movies:", error);
+      // Optionally, set an error state to show a message to the user
     } finally {
       setLoading(false);
     }
@@ -50,24 +59,23 @@ const Popular = () => {
         observer.current.unobserve(lastMovieElement);
       }
     };
-  }, [loading, movies]);
+  }, [loading]);
 
   return (
     <>
       <Nav />
-
       <div className="new-and-popular">
         <h2>New & Popular</h2>
         <div className="new-and-popular__posters">
           {movies
-            ?.filter(
+            .filter(
               (movie) =>
                 movie.title && (movie.poster_path || movie.backdrop_path)
-            ) // Filter out movies with empty title or missing photos
-            .map((movie, index) => (
+            )
+            .map((movie) => (
               <img
                 className="new-and-popular__poster"
-                key={`${index}-${page}`} // Ensure unique key
+                key={movie.id} // Use movie.id as the key
                 src={`${base_url}${movie.poster_path || movie.backdrop_path}`}
                 alt={movie.title}
                 onClick={() => {
