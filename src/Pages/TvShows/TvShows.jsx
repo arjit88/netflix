@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./TvShows.css";
 import Nav from "../../components/Navbar/Nav";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const TvShows = () => {
   const navigate = useNavigate();
@@ -97,7 +98,11 @@ const TvShows = () => {
           ))}
           <div id="last-show" style={{ height: "20px" }} />
         </div>
-        {loading && <p className="loading">Loading more...</p>}
+        {loading && (
+          <div className="loading-screen">
+            <ClipLoader color="#ff0000" loading={loading} size={150} />
+          </div>
+        )}
       </div>
     </>
   );

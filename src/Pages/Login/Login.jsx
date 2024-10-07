@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { logIn, signUp } from "../../config/firebase";
-import netflix_spinner from "../../assets/netflix_spinner.gif";
 import AuthPage from "../AuthPage/AuthPage";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Login = () => {
   const [signState, setSignState] = useState("Sign In");
@@ -33,8 +33,8 @@ const Login = () => {
 
   if (loading) {
     return (
-      <div className="login-spinner">
-        <img src={netflix_spinner} alt="Loading..." />
+      <div className="loading-screen">
+        <ClipLoader color="#ff0000" loading={loading} size={150} />
       </div>
     );
   }

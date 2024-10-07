@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { IoArrowBack } from "react-icons/io5";
 import "./MovieDescription.css";
 import Nav from "../Navbar/Nav";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const MovieDescription = () => {
   const { id } = useParams();
@@ -31,7 +32,12 @@ const MovieDescription = () => {
     fetchMovieDetails();
   }, [id]);
 
-  if (loading) return <div className="spinner">Loading...</div>;
+  if (loading)
+    return (
+      <div className="loading-screen">
+        <ClipLoader color="#ff0000" loading={loading} size={150} />
+      </div>
+    );
   if (!movie) return <div>Error: Movie not found.</div>;
 
   const director = movie.credits.crew.find(

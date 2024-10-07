@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import "./Search.css";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Search = () => {
   const [query, setQuery] = useState("");
@@ -91,38 +92,37 @@ const Search = () => {
       <div className="message-container">
         {error && <p className="error-message">{error}</p>}
         {results.length === 0 && !loading && (
-          <p className="no-results">No results found.</p>
+          <p className="no-results">Search Movies,Web-Shows,Netflix-Original</p>
         )}
       </div>
 
       <div className="search-results">
         {results
-          .filter(
-            (item) =>
+          .filter((item) => {
+            const title = item.media_type === "movie" ? item.title : item.name;
+            return (
               item.poster_path &&
-              (item.media_type === "movie" ? item.title : item.name)
-          )
+              title &&
+              title.toLowerCase().includes(
+                query.toLowerCase() // Case insensitive check
+              )
+            );
+          })
           .map((item) => (
             <div key={item.id} className="search-item">
-              {item.media_type === "movie" && item.poster_path && (
-                <img
-                  className="poster"
-                  src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
-                  alt={item.title}
-                  onClick={() => handlePosterClick(item.id)}
-                />
-              )}
-              {item.media_type === "tv" && item.poster_path && (
-                <img
-                  className="poster"
-                  src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
-                  alt={item.name}
-                  onClick={() => handlePosterClick(item.id)}
-                />
-              )}
+              <img
+                className="poster"
+                src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
+                alt={item.media_type === "movie" ? item.title : item.name}
+                onClick={() => handlePosterClick(item.id)}
+              />
             </div>
           ))}
-        {loading && <p className="loading">Loading...</p>}
+        {loading && (
+          <div className="loading-screen">
+            <ClipLoader color="#ff0000" loading={loading} size={150} />
+          </div>
+        )}
       </div>
     </div>
   );

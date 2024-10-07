@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Row.css";
 import axios from "../../config/axios";
 import { useNavigate } from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Row = ({ title, fetchUrl, isLargeRow = false }) => {
   const navigate = useNavigate();
@@ -26,7 +27,12 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
     fetchData();
   }, [fetchUrl]);
 
-  if (loading) return <div className="spinners"></div>;
+  if (loading)
+    return (
+      <div className="loading-screen">
+        <ClipLoader color="#ff0000" loading={loading} size={150} />
+      </div>
+    );
   if (error) return <div className="error-message">{error}</div>;
 
   return (

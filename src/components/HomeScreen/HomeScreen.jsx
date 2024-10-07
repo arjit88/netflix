@@ -1,10 +1,15 @@
+import React, { useState, useEffect } from "react";
 import Nav from "../Navbar/Nav";
 import Banner from "../Banner/Banner";
 import Row from "../Row/Row";
 import requests from "../../config/Requests";
 import Footer from "../Footer/Footer";
+import "./HomeScreen.css";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const HomeScreen = () => {
+  const [loading, setLoading] = useState(true);
+
   const rows = [
     {
       title: "NETFLIX ORIGINALS",
@@ -37,19 +42,44 @@ const HomeScreen = () => {
     { title: "Documentary", fetchUrl: requests.fetchDocumentaries },
   ];
 
+  useEffect(() => {
+    // Check if data is already cached
+    const cachedData = localStorage.getItem("homeData");
+    if (cachedData) {
+      setLoading(false); // No loading if data is cached
+    } else {
+      // Simulate data fetching with a timeout
+      const fetchData = async () => {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        // Store data in localStorage (you may replace this with actual fetch and data)
+        localStorage.setItem("homeData", JSON.stringify(rows));
+        setLoading(false);
+      };
+      fetchData();
+    }
+  }, []);
+
   return (
     <div className="homeScreen">
-      <Nav />
-      <Banner />
-      {rows.map(({ title, fetchUrl, isLargeRow }, index) => (
-        <Row
-          key={title}
-          title={title}
-          fetchUrl={fetchUrl}
-          isLargeRow={isLargeRow}
-        />
-      ))}
-      <Footer />
+      {loading ? (
+        <div className="loading-screen">
+          <ClipLoader color="#ff0000" loading={loading} size={150} />
+        </div>
+      ) : (
+        <>
+          <Nav />
+          <Banner />
+          {rows.map(({ title, fetchUrl, isLargeRow }, index) => (
+            <Row
+              key={title}
+              title={title}
+              fetchUrl={fetchUrl}
+              isLargeRow={isLargeRow}
+            />
+          ))}
+          <Footer />
+        </>
+      )}
     </div>
   );
 };

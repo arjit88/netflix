@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaArrowLeft } from "react-icons/fa";
 import "./Cast.css";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Cast = () => {
   const { id } = useParams();
@@ -12,6 +13,7 @@ const Cast = () => {
   const [error, setError] = React.useState(null);
   const base_url = "https://image.tmdb.org/t/p/original/";
   const apiKey = "c4d2f5db860396b544127ac219cadde5";
+  const [loading, setLoading] = useState(true);
 
   const fetchActorDetails = async () => {
     try {
@@ -35,7 +37,12 @@ const Cast = () => {
   }, [id]);
 
   if (error) return <div className="spinnerss">{error}</div>;
-  if (!actor) return <div className="spinnerss">Loading...</div>;
+  if (!actor)
+    return (
+      <div className="loading-screen">
+        <ClipLoader color="#ff0000" loading={loading} size={150} />
+      </div>
+    );
 
   return (
     <div className="cast-container">

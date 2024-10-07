@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Player = () => {
   const { id } = useParams();
@@ -64,7 +65,9 @@ const Player = () => {
       </div>
 
       {loading ? (
-        <div className="loading">Loading video...</div>
+        <div className="loading-screen">
+          <ClipLoader color="#ff0000" loading={loading} size={150} />
+        </div>
       ) : (
         <>
           {videoData.key ? (

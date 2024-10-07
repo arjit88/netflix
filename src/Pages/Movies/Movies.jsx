@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Movies.css";
 import Nav from "../../components/Navbar/Nav";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Movies = () => {
   const navigate = useNavigate();
@@ -86,7 +87,11 @@ const Movies = () => {
           <div id="last-movie" style={{ height: "20px" }} />{" "}
           {/* Empty div to act as the target for observer */}
         </div>
-        {loading && <p className="loading">Loading more...</p>}
+        {loading && (
+          <div className="loading-screen">
+            <ClipLoader color="#ff0000" loading={loading} size={150} />
+          </div>
+        )}
       </div>
     </>
   );
